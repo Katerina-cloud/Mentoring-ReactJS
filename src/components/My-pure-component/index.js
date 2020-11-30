@@ -1,0 +1,1 @@
+export { MyPureComponent } from './My-pure-component';
