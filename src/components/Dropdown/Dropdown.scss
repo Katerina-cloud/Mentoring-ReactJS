@@ -1,7 +1,11 @@
+.dropdown {
+  min-width: 240px;
+}
+
 .dropdown__label {
   color: $color-primary-light;
   text-transform: uppercase;
-  font-size: medium;
+  font-size: large;
 }
 .dropdown__select {
   border: none;
@@ -9,6 +13,6 @@
   outline: transparent;
   color: $color-white;
   text-transform: uppercase;
-  font-size: medium;
+  font-size: large;
   margin: 17px 0 17px 30px;
 }
