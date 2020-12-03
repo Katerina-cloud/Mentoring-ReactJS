@@ -11,7 +11,7 @@ export const Film = ({image, title, category, year}) => {
       <div className="film__dropdown">
         <DottedIconDropdown />
       </div>
-      <div className="film_footer">
+      <div className="film__footer">
         <div>
           <div className="film__title film__text">{title}</div>
           <div className="film__category film__text">{category}</div>

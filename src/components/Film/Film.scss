@@ -2,31 +2,32 @@
   width: 400px;
   height: 630px;
   position: relative;
-}
-.film__image {
-  width: 400px;
-  height: 550px;
-  background-color: $color-primary;
-  margin-bottom: 25px;
-}
-.film__text {
-  text-transform: capitalize;
-  color: $color-white;
-  opacity: 0.5;
-}
-.film_footer {
-  display: flex;
-  justify-content: space-between;
-}
-.film__title {
-  font-size: large;
-  margin-bottom: 10px;
-}
-.film__category {
-  font-size: medium;
-}
-.film__dropdown {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+
+  &__image {
+    width: 400px;
+    height: 550px;
+    background-color: $color-primary;
+    margin-bottom: 25px;
+  }
+  &__text {
+    text-transform: capitalize;
+    color: $color-white;
+    opacity: 0.5;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    font-size: large;
+    margin-bottom: 10px;
+  }
+  &__category {
+    font-size: medium;
+  }
+  &__dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 }
