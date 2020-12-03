@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Chip } from "../Chip/";
 import { DottedIconDropdown } from "../Dotted-Icon-Dropdown/";
 
@@ -20,3 +21,9 @@ export const Film = ({image, title, category, year}) => {
     </div>
   )
 }
+
+Film.propTypes = {
+  title: PropTypes.string,
+  category: PropTypes.string,
+  year: PropTypes.string
+};
