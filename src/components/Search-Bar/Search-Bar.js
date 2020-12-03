@@ -1,6 +1,6 @@
 import React from "react";
-import { SearchInput } from "../Search-Input/Search-Input";
-import { Button } from "../Button/Button";
+import { SearchInput } from "../Search-Input/";
+import { Button } from "../Button/";
 
 export const SearchBar = () => {
   return (

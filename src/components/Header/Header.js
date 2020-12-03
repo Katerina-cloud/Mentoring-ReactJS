@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../Button/Button";
-import { Logo } from "../Logo/Logo";
-import { SearchBar } from "../Search-Bar/Search-Bar";
+import { Button } from "../Button/";
+import { Logo } from "../Logo/";
+import { SearchBar } from "../Search-Bar/";
 
 export const Header = () => {
   return (

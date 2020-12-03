@@ -1,6 +1,6 @@
 import React from "react";
 import { Chip } from "../Chip/";
-import { DottedIconDropdown } from "../Dotted-Icon-Dropdown/Dotted-Icon-Dropdown";
+import { DottedIconDropdown } from "../Dotted-Icon-Dropdown/";
 
 export const Film = ({image, title, category, year}) => {
   return (

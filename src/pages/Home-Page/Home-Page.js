@@ -1,8 +1,8 @@
 import React from "react";
-import { Header } from '../../components/Header/Header';
-import { Footer } from '../../components/Footer/Footer';
-import { FilterBar } from '../../components/Filter-Bar/Filter-Bar';
-import { Film } from '../../components/Film/Film';
+import { Header } from '../../components/Header/';
+import { Footer } from '../../components/Footer/';
+import { FilterBar } from '../../components/Filter-Bar/';
+import { Film } from '../../components/Film/';
 
 export const HomePage = () => {
   return (

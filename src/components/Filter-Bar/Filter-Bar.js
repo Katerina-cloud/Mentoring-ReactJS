@@ -1,6 +1,6 @@
 import React from "react";
-import { FilterButton } from "../Filter-Button/Filter-Button";
-import { Dropdown } from "../Dropdown/Dropdown";
+import { FilterButton } from "../Filter-Button/";
+import { Dropdown } from "../Dropdown/";
 
 export const FilterBar = () => {
   return (
