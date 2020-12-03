@@ -1,0 +1,20 @@
+.filter-button {
+  outline: transparent;
+  cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+  border-width: 0 0 2px 0;
+  color: $color-white;
+  text-transform: uppercase;
+  font-size: medium;
+  padding: 17px 0;
+
+  &:hover {
+    background-color: $color-primary-light;
+    border-radius: 5px;
+  }
+  &:focus {
+    border-color: $color-secondary;
+    border-width: 0 0 2px 0;
+  }
+}

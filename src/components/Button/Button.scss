@@ -1,0 +1,21 @@
+.button {
+  color: $color-white;
+  outline: transparent;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  font-size: large;
+  padding: 17px;
+  cursor: pointer;
+
+  &--red {
+    background-color: $color-secondary;
+  }
+  &--gray {
+    background-color: $color-primary-light;
+    opacity: 0.8;
+  }
+  &--text-red {
+    color: $color-secondary;
+  }
+}

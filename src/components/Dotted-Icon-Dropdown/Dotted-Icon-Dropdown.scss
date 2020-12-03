@@ -1,0 +1,51 @@
+.dotted-icon-dropdown {
+  position: relative;
+
+  &__icon {
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+  }
+
+  &__pop-up {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: $color-primary-dark;
+    outline: transparent;
+    color: $color-primary-light;
+    font-size: medium;
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 5px;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__close-icon {
+    display: inline-block;
+    align-self: flex-end;
+    right: 0;
+    padding: 0 30px 5px 0;
+    cursor: pointer;
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &__option {
+    padding: 10px 30px;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-white;
+    }
+  }
+}

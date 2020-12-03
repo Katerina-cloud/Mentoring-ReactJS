@@ -1,0 +1,10 @@
+.chip {
+  display: flex;
+  align-items: center;
+  border: 2px solid $color-primary-light;
+  border-radius: 5px;
+  padding: 0 10px;
+  color: $color-white;
+  opacity: 0.5;
+  max-height: 30px;
+}

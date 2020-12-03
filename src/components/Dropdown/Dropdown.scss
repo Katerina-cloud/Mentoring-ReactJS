@@ -1,0 +1,14 @@
+.dropdown__label {
+  color: $color-primary-light;
+  text-transform: uppercase;
+  font-size: medium;
+}
+.dropdown__select {
+  border: none;
+  background-color: $color-primary-dark;
+  outline: transparent;
+  color: $color-white;
+  text-transform: uppercase;
+  font-size: medium;
+  margin: 17px 0 17px 30px;
+}
