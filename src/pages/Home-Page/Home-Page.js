@@ -15,12 +15,20 @@ export const HomePage = () => {
         <FilterBar></FilterBar>
       </div>
       <div className="main__films">
-        <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        <div className="main__film">
+          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        </div>
+        <div className="main__film">
+          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        </div>
+          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        <div className="main__film">
+          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        </div>
+          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        <div className="main__film">
+          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        </div>
       </div>
     </main>
     <footer>
