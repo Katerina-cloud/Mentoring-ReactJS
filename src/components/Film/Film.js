@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Chip } from "../Chip/";
-import { DottedIconDropdown } from "../Dotted-Icon-Dropdown/";
+import { DottedIconDropdown, Chip } from "../../components/";
 
 export const Film = ({image, title, category, year}) => {
   return (

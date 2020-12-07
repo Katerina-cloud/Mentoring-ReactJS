@@ -1,1 +1,1 @@
-export { Logo } from './Logo.js';
+export { Logo } from './logo.js';

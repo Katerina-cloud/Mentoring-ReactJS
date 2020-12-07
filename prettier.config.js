@@ -2,7 +2,7 @@ module.exports = {
   singleQuote: true,
   bracketSpacing: true,
   arrowParens: 'always',
-  printWidth: 120,
+  printWidth: 80,
   overrides: [
     {
       files: '*.scss',

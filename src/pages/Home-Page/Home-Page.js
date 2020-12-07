@@ -1,39 +1,57 @@
 import React from "react";
-import { Header } from '../../components/Header/';
-import { Footer } from '../../components/Footer/';
-import { FilterBar } from '../../components/Filter-Bar/';
-import { Film } from '../../components/Film/';
+import { Footer, FilterBar, Film } from '../../components/';
 
 export const HomePage = () => {
+  const data = [
+    {
+      year: "2003",
+      title: "Kill Bill",
+      category: "Drama",
+    },
+    {
+      year: "2003",
+      title: "Kill Bill",
+      category: "Drama",
+    },
+    {
+      year: "2003",
+      title: "Kill Bill",
+      category: "Drama",
+    },
+    {
+      year: "2003",
+      title: "Kill Bill",
+      category: "Drama",
+    },
+    {
+      year: "2003",
+      title: "Kill Bill",
+      category: "Drama",
+    },
+    {
+      year: "2003",
+      title: "Kill Bill",
+      category: "Drama",
+    }
+  ];
+
   return (
     <>
-    <header className="header">
-      <Header></Header>
-    </header>
-    <main className="main">
-      <div className="main__filter">
-        <FilterBar></FilterBar>
-      </div>
-      <div className="main__films">
-        <div className="main__film">
-          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+      <main className="main">
+        <div className="main__filter">
+          <FilterBar></FilterBar>
         </div>
-        <div className="main__film">
-          <Film year="2003" title="Kill Bill" category="Drama"></Film>
+        <div className="main__films">
+          {data.map((item, index) => (
+          <div key={index} className="main__film">
+            <Film year={item.year} title={item.title} category={item.category}></Film>
+          </div>
+          ))}
         </div>
-          <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <div className="main__film">
-          <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        </div>
-          <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        <div className="main__film">
-          <Film year="2003" title="Kill Bill" category="Drama"></Film>
-        </div>
-      </div>
-    </main>
-    <footer>
-      <Footer></Footer>
-    </footer>
+      </main>
+      <footer>
+        <Footer></Footer>
+      </footer>
     </>
   )
 }

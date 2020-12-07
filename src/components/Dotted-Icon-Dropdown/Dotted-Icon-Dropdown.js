@@ -1,5 +1,5 @@
 import React from "react";
-import { DottedIcon } from '../../assets/Dotted-Icon';
+import { DottedIcon } from '../../assets/dotted-icon';
 
 export const DottedIconDropdown = () => {
   return (
