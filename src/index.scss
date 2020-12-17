@@ -7,11 +7,15 @@
 @import "./components/dotted-icon-dropdown/dotted-icon-dropdown";
 @import "./components/filter-bar/filter-bar";
 @import "./components/dropdown/dropdown";
-@import "./components/search-input/search-input";
+@import "./components/form-input/form-input";
+@import "./components/form-date-input/form-date-input";
 @import "./components/search-bar/search-bar";
 @import "./pages/home-page/home-page";
 @import "./components/header/header";
 @import "./components/footer/footer";
+@import "./components/modal/modal";
+@import "./components/modal-windows/add-movie/add-movie";
+@import "./components/modal-windows/edit-movie/edit-movie";
 
 body {
   margin: 0;

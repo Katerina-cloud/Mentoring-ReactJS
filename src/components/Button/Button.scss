@@ -15,6 +15,11 @@
   &--gray {
     background-color: $color-primary-light;
     opacity: 0.8;
+    width: 100%;
+  }
+  &--border-red {
+    border-color: $color-secondary;
+    border-width: 1px;
   }
   &--text-red {
     color: $color-secondary;

@@ -1,39 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Footer, FilterBar, Film } from '../../components/';
+import { movieData } from '../../mock-data';
 
 export const HomePage = () => {
-  const data = [
-    {
-      year: "2003",
-      title: "Kill Bill",
-      category: "Drama",
-    },
-    {
-      year: "2003",
-      title: "Kill Bill",
-      category: "Drama",
-    },
-    {
-      year: "2003",
-      title: "Kill Bill",
-      category: "Drama",
-    },
-    {
-      year: "2003",
-      title: "Kill Bill",
-      category: "Drama",
-    },
-    {
-      year: "2003",
-      title: "Kill Bill",
-      category: "Drama",
-    },
-    {
-      year: "2003",
-      title: "Kill Bill",
-      category: "Drama",
-    }
-  ];
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    setMovies(movieData);
+  }, []);
 
   return (
     <>
@@ -42,7 +16,7 @@ export const HomePage = () => {
           <FilterBar></FilterBar>
         </div>
         <div className="main__films">
-          {data.map((item, index) => (
+          {movies.map((item, index) => (
           <div key={index} className="main__film">
             <Film year={item.year} title={item.title} category={item.category}></Film>
           </div>

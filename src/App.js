@@ -7,11 +7,11 @@ import { ErrorBoundary } from "./components/";
 const App = () => {
   return (
     <ErrorBoundary>
-    <header className="header">
-      <Header />
-    </header>
-      <HomePage>
-      </HomePage>
+      <header className="header">
+        <Header />
+      </header>
+        <HomePage>
+        </HomePage>
     </ErrorBoundary>
   );
 }
