@@ -19,11 +19,11 @@
     justify-content: space-between;
   }
   &__title {
-    font-size: large;
+    @include headline;
     margin-bottom: 10px;
   }
   &__category {
-    font-size: medium;
+    @include paragraph;
   }
   &__dropdown {
     position: absolute;

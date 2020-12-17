@@ -2,7 +2,7 @@
   &__overlay {
     background-color: rgba($color-primary-dark, 0.8);
     position: absolute;
-    height: 100%;
+    height: 150%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -31,18 +31,17 @@
     flex-direction: column;
   }
   &__icon {
+    @include large-title;
     color: $color-white;
-    font-size: x-large;
     align-self: flex-end;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    background: none;
+    border: none;
   }
 
   &__title {
+    @include large-title;
     color: $color-white;
-    text-transform: uppercase;
-    font-weight: 400;
     margin-bottom: 20px;
   }
 

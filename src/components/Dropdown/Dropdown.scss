@@ -3,16 +3,14 @@
 
   &__label {
     color: $color-primary-light;
-    text-transform: uppercase;
-    font-size: large;
+    @include title1;
   }
   &__select {
+    @include title1;
     border: none;
     background-color: $color-primary-dark;
     outline: transparent;
     color: $color-white;
-    text-transform: uppercase;
-    font-size: large;
     margin: 17px 0 17px 30px;
   }
 }

@@ -1,6 +1,6 @@
 .logo {
+  @include headline;
   color: $color-secondary;
-  font-size: large;
 
   &--bold {
     font-weight: bold;

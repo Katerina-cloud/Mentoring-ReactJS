@@ -1,4 +1,5 @@
-@import "/src/consts/colors";
+@import "/src/styles/colors";
+@import "/src/styles/typography";
 @import "./components/logo/logo";
 @import "./components/button/button";
 @import "./components/filter-button/filter-button";
@@ -14,8 +15,8 @@
 @import "./components/header/header";
 @import "./components/footer/footer";
 @import "./components/modal/modal";
-@import "./components/modal-windows/add-movie/add-movie";
-@import "./components/modal-windows/edit-movie/edit-movie";
+@import "./components/add-movie-modal/add-movie-modal";
+@import "./components/edit-movie-modal/edit-movie-modal";
 
 body {
   margin: 0;

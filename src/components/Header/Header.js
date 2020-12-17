@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Button, Logo, SearchBar, Modal, AddMovie } from "../../components/";
+import { Button, Logo, SearchBar, Modal, AddMovieModal } from "../../components/";
+import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
 
 export const Header = () => {
   const formRef = useRef(null);
@@ -22,16 +23,16 @@ export const Header = () => {
     console.log('Cancel function!');
     setOpen(false);
   }
-
+  const defaultState = {
+    title: "",
+    URL: "",
+    overview: "",
+    runTime: "",
+    releaseDate: "",
+  };
   const handleReset = () => {
     const form = formRef.current;
-    form.setState({
-      title: "",
-      URL: "",
-      overview: "",
-      runTime: "",
-      releaseDate: "",
-    });
+    form.setState(defaultState);
     console.log('Reset function!');
     console.log(form.state);
     console.log('Reset function!');
@@ -47,13 +48,13 @@ export const Header = () => {
         <Modal
           title="ADD MOVIE"
           isOpen={isOpen}
-          firstButtonTitle = "Reset"
-          secondButtonTitle = "Submit"
+          firstButtonTitle = { FIRST_BUTTON_TITLE }
+          secondButtonTitle = { SECOND_BUTTON_TITLE }
           onCancel={handleCancel}
           onReset={handleReset}
           onSubmit={handleSubmit}
         >
-          <AddMovie ref={formRef}></AddMovie>
+          <AddMovieModal ref={formRef}></AddMovieModal>
         </Modal>
       </div>
       <div className="header__search-bar">

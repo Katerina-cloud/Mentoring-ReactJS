@@ -22,7 +22,7 @@
   &__text,
   &__date,
   &__select ::placeholder {
-    font-size: large;
+    @include headline;
   }
   &__label {
     color: $color-secondary;

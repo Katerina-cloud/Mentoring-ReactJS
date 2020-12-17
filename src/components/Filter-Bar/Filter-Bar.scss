@@ -21,8 +21,8 @@
     z-index: 2;
   }
   &__results {
+    @include headline;
     color: $color-white;
-    font-size: large;
     padding: 25px 0;
   }
   &__results--bold {

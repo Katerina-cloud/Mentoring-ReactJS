@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { DottedIcon } from '../../assets/dotted-icon';
-import {  Modal, EditMovie } from '../../components/index';
+import {  Modal, EditMovieModal } from '../../components';
+import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
  
 export const DottedIconDropdown = () => {
   const formRef = useRef(null);
@@ -20,16 +21,17 @@ export const DottedIconDropdown = () => {
     setEditModalOpen(false);
   }
   const handleEditCancel = () => setEditModalOpen(false);
+  const defaultState = {
+    title: "",
+    URL: "",
+    overview: "",
+    runTime: "",
+    releaseDate: "",
+  };
 
   const handleEditReset = () => {
     const form = formRef.current;
-    form.setState({
-      title: "",
-      URL: "",
-      overview: "",
-      runTime: "",
-      releaseDate: "",
-    });
+    form.setState(defaultState);
     console.log('handleEditReset!');
     console.log(form.state);
   };
@@ -49,19 +51,19 @@ export const DottedIconDropdown = () => {
         <DottedIcon />
       </div>
       {isDropdownOpen && <div className="dotted-icon-dropdown__pop-up">
-        <div onClick={hideDropdown} className="dotted-icon-dropdown__close-icon">X</div>
+        <button onClick={hideDropdown} className="dotted-icon-dropdown__close-icon">X</button>
         <div onClick={openEditModal} className="dotted-icon-dropdown__option">Edit</div>
         <div onClick={openDeleteModal} className="dotted-icon-dropdown__option">Delete</div>
         <Modal
           title="EDIT MOVIE"
           isOpen={isEditModalOpen}
-          firstButtonTitle = "Reset"
-          secondButtonTitle = "Save"
+          firstButtonTitle = { FIRST_BUTTON_TITLE }
+          secondButtonTitle = { SECOND_BUTTON_TITLE }
           onSubmit={handleEditSubmit}
           onReset={handleEditReset}
           onCancel={handleEditCancel}
         >
-          <EditMovie ref={formRef}></EditMovie>
+          <EditMovieModal ref={formRef}></EditMovieModal>
         </Modal>
         <Modal
           title="DELETE MOVIE"

@@ -1,7 +1,7 @@
 import React from "react";
-import { FormInput, FormDateInput } from '../../index';
+import { FormInput, FormDateInput } from '../index';
 
-export class EditMovie extends React.Component {
+export class EditMovieModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

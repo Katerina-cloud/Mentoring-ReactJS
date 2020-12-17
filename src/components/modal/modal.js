@@ -12,7 +12,7 @@ export const Modal = ({
           <div className="modal__overlay">
             <div className="modal__window">
               <div className="modal__header">
-                <div className="modal__icon" onClick={onCancel} >X</div>
+                <button className="modal__icon" onClick={onCancel} >X</button>
                 <h1 className="modal__title">{title}</h1>
               </div>
               <div className="modal__body">
@@ -45,7 +45,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  title: 'Modal title',
+  title: '',
   isOpen: false,
   onCancel: () => {},
   onSubmit: () => {},
