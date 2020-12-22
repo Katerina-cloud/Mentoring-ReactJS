@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Button, Logo, SearchBar, Modal, AddMovieModal } from "../../components/";
+import { Button, Logo, SearchBar, Modal, AddMovieModalContent } from "../../components/";
 import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
 
 export const Header = () => {
@@ -45,17 +45,16 @@ export const Header = () => {
         <div className="header__button">
           <Button onClick={openModal} title="+Add movie" color="gray" textColor="red" />
         </div>
-        <Modal
+        {isOpen && <Modal
           title="ADD MOVIE"
-          isOpen={isOpen}
           firstButtonTitle = { FIRST_BUTTON_TITLE }
           secondButtonTitle = { SECOND_BUTTON_TITLE }
           onCancel={handleCancel}
           onReset={handleReset}
           onSubmit={handleSubmit}
         >
-          <AddMovieModal ref={formRef}></AddMovieModal>
-        </Modal>
+          <AddMovieModalContent ref={formRef}></AddMovieModalContent>
+        </Modal>}
       </div>
       <div className="header__search-bar">
         <SearchBar />

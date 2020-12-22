@@ -1,0 +1,1 @@
+export { EditMovieModalContent } from './edit-movie-modal-content';

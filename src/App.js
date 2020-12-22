@@ -1,7 +1,7 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import "./App.scss";
-import { HomePage } from "./pages/Home-Page";
+import { HomePage, MovieDetails } from "./pages/";
 import { Header } from './components/';
 import { ErrorBoundary } from "./components/";
 const App = () => {
@@ -10,8 +10,8 @@ const App = () => {
       <header className="header">
         <Header />
       </header>
-        <HomePage>
-        </HomePage>
+      <MovieDetails movieId="2" />
+      <HomePage />
     </ErrorBoundary>
   );
 }

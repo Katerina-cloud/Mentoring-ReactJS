@@ -11,12 +11,16 @@
 @import "./components/form-input/form-input";
 @import "./components/form-date-input/form-date-input";
 @import "./components/search-bar/search-bar";
-@import "./pages/home-page/home-page";
 @import "./components/header/header";
 @import "./components/footer/footer";
 @import "./components/modal/modal";
-@import "./components/add-movie-modal/add-movie-modal";
+@import "./components/add-movie-modal-content/add-movie-modal-content";
+@import "./components/edit-movie-modal-content/edit-movie-modal-content";
 @import "./components/edit-movie-modal/edit-movie-modal";
+@import "./components/raiting/raiting";
+
+@import "./pages/movie-details/movie-details";
+@import "./pages/home-page/home-page";
 
 body {
   margin: 0;

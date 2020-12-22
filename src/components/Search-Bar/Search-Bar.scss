@@ -1,8 +1,7 @@
 .search-bar {
   &__title {
+    @include large-title;
     color: $color-white;
-    text-transform: uppercase;
-    font-weight: 400;
     margin-bottom: 50px;
   }
   &__search-container {
