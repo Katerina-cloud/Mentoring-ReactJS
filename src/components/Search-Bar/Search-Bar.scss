@@ -1,6 +1,6 @@
 .search-bar {
   &__title {
-    @include large-title;
+    @include extra-large-title;
     color: $color-white;
     margin-bottom: 50px;
   }

@@ -24,7 +24,7 @@
     align-items: center;
   }
   &__title {
-    @include large-title;
+    @include extra-large-title;
     color: $color-white;
     margin: 0 20px 10px 0;
   }

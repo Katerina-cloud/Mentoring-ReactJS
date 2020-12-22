@@ -42,7 +42,6 @@ export const EditMovieModal = ({ isOpen, toggleOpen}) => {
 	return (
 		<>
 			{isOpen && <Modal
-			// {isOpen && <Modal
 				title="EDIT MOVIE"
 				firstButtonTitle = { FIRST_BUTTON_TITLE }
 				secondButtonTitle = { SECOND_BUTTON_TITLE }
@@ -50,7 +49,6 @@ export const EditMovieModal = ({ isOpen, toggleOpen}) => {
 				onReset={handleEditReset}
 				onCancel={handleEditCancel}
 		>
-      {/* <form onSubmit={handleSubmit}> */}
       <form>
         <div className="edit-movie__input">
           <FormInput name="id" value={formState.id} onChange={handleChange} placeholder="Id" label="Movie id"></FormInput>
