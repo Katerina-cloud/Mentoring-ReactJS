@@ -39,7 +39,7 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <header className="header">
       <div className="header__add-movie">
         <Logo />
         <div className="header__button">
@@ -59,6 +59,6 @@ export const Header = () => {
       <div className="header__search-bar">
         <SearchBar />
       </div>
-    </>
+    </header>
   )
 }

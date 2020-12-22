@@ -1,16 +1,14 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import "./App.scss";
-import { HomePage, MovieDetails } from "./pages/";
+import { HomePage, MovieDetailsPage } from "./pages/";
 import { Header } from './components/';
 import { ErrorBoundary } from "./components/";
 const App = () => {
   return (
     <ErrorBoundary>
-      <header className="header">
-        <Header />
-      </header>
-      <MovieDetails movieId="2" />
+      <Header />
+      <MovieDetailsPage movieId="2" />
       <HomePage />
     </ErrorBoundary>
   );

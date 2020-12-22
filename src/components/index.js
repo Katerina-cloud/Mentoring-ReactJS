@@ -18,3 +18,4 @@ export { EditMovieModal } from './edit-movie-modal';
 export { Portal } from './portal';
 export { Modal } from './modal';
 export { Raiting } from './raiting';
+export { MovieDetails } from './movie-details';

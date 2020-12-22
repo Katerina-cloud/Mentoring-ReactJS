@@ -1,12 +1,8 @@
-.header {
-  padding: 20px 5%;
-  background-color: $color-primary-dark;
-  border-bottom: 10px solid $color-primary-light;
-}
-.main {
-  background-color: $color-primary-dark;
-  padding: 5px 5% 100px 5%;
-
+.home-page {
+  &__main {
+    background-color: $color-primary-dark;
+    padding: 5px 5% 100px 5%;
+  }
   &__filter {
     display: flex;
     justify-content: space-between;

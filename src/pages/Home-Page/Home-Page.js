@@ -11,13 +11,13 @@ export const HomePage = () => {
 
   return (
     <>
-      <main className="main">
-        <div className="main__filter">
+      <main className="home-page__main">
+        <div className="home-page__filter">
           <FilterBar></FilterBar>
         </div>
-        <div className="main__films">
+        <div className="home-page__films">
           {movies.map((item, index) => (
-          <div key={index} className="main__film">
+          <div key={index} className="home-page__film">
             <Film year={item.year} title={item.title} category={item.category}></Film>
           </div>
           ))}
