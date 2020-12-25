@@ -1,46 +1,66 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import {  Modal, FormInput, FormDateInput } from '../../components';
 import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
 
-export const EditMovieModal = ({ isOpen, toggleOpen}) => {
-  const defaultState = {
-    id: "",
-    title: "",
-    URL: "",
-    overview: "",
-    runTime: "",
-    releaseDate: "",
-  };
-  const [formState, setFormState] = useState(defaultState);
+const ACTION_RESET = "ACTION_RESET";
+const ACTION_UPDATE = "ACTION_UPDATE";
 
-  function handleChange (event) {
-    event.preventDefault();
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    console.log("name", name, "value", value)
+const initialState = {
+  id: "",
+  title: "",
+  URL: "",
+  overview: "",
+  runTime: "",
+  releaseDate: "",
+};
 
-    setFormState({
-      [name]: value
-    });
-  };
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTION_UPDATE:
+      const {field, value} = action.payload;
 
-  const handleEditSubmit = () => {
-    console.log(formState);
-    toggleOpen(isOpen);
+      return {
+        ...state,
+        [field]: value,
+      }
+
+    case ACTION_RESET:
+      return action.payload;
+  
+    default:
+      break;
   }
-  const handleEditCancel = () => toggleOpen(isOpen);
+}
 
-  const handleEditReset = () => {
-    setFormState({
-      defaultState
+export const EditMovieModal = ({ isOpen, toggleOpen}) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { id, title, URL, overview, runTime, releaseDate } = state;
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    dispatch({ type: ACTION_UPDATE, payload: {
+      field: e.target.name,
+      value: e.target.value,
+      }
     });
+    console.log(state);
+  }
+  
+  const handleEditSubmit = () => {
+    console.log(state);
+    toggleOpen(isOpen);
+  };
+  
+  const handleEditCancel = () => toggleOpen(isOpen);
+  
+  const handleEditReset = () => {
+    dispatch({ type: ACTION_RESET, payload: initialState });
+    console.log(state);
     console.log('handleEditReset!');
-    console.log(formState);
   };
   
 	return (
-		<>
+    <>
 			{isOpen && <Modal
 				title="EDIT MOVIE"
 				firstButtonTitle = { FIRST_BUTTON_TITLE }
@@ -48,25 +68,25 @@ export const EditMovieModal = ({ isOpen, toggleOpen}) => {
 				onSubmit={handleEditSubmit}
 				onReset={handleEditReset}
 				onCancel={handleEditCancel}
-		>
+        >
       <form>
         <div className="edit-movie__input">
-          <FormInput name="id" value={formState.id} onChange={handleChange} placeholder="Id" label="Movie id"></FormInput>
+          <FormInput name="id" value={id} onChange={handleChange} placeholder="Id" label="Movie id"></FormInput>
         </div>
         <div className="edit-movie__input">
-          <FormInput name="title" value={formState.title} onChange={handleChange} placeholder="Title" label="Title"></FormInput>
+          <FormInput name="title" value={title} onChange={handleChange} placeholder="Title" label="Title"></FormInput>
         </div>
         <div className="edit-movie__input">
-          <FormInput name="URL" value={formState.URL} onChange={handleChange} placeholder="Movie URL here" label="Movie URL"></FormInput>
+          <FormInput name="URL" value={URL} onChange={handleChange} placeholder="Movie URL here" label="Movie URL"></FormInput>
         </div>
         <div className="edit-movie__input">
-          <FormInput name="overview" value={formState.overview} onChange={handleChange} placeholder="Overview here" label="Overview"></FormInput>
+          <FormInput name="overview" value={overview} onChange={handleChange} placeholder="Overview here" label="Overview"></FormInput>
         </div>
         <div className="edit-movie__input">
-          <FormInput name="runTime" value={formState.runTime} onChange={handleChange} placeholder="Run time here" label="Run time"></FormInput>
+          <FormInput name="runTime" value={runTime} onChange={handleChange} placeholder="Run time here" label="Run time"></FormInput>
         </div>
         <div className="edit-movie__input">
-          <FormDateInput name="releaseDate" value={formState.releaseDate} onChange={handleChange} label="Release date"></FormDateInput>
+          <FormDateInput name="releaseDate" value={releaseDate} onChange={handleChange} label="Release date"></FormDateInput>
         </div>
       </form>
 		</Modal>}
