@@ -3,8 +3,8 @@ import { Logo } from "../../components/";
 
 export const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <Logo />
-    </div>
+    </footer>
   )
 }

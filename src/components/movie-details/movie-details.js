@@ -1,31 +1,32 @@
-import React from "react";
-import { SearchIcon } from '../../assets/icons/search';
-import { Raiting, Logo } from '../../components/';
+import React, { useEffect, useState }  from "react";
+import { HeaderMovieDetails, Footer, FilterBar, Film  } from '../../components/';
+import { } from '../../components/';
+import { movieData } from '../../mock-data';
 
 export const MovieDetails = ({movie}) => {
-  const {title, raiting, overview, year, duration, description } = movie
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    setMovies(movieData);
+  }, []);
 
   return (
-    <header className="movie-details">
-      <div className="movie-details__header">
-        <Logo />
-        <SearchIcon />
-      </div>
-      <div className="movie-details__main">
-        <div className="movie-details__image"></div>
-        <div className="movie-details__info">
-          <div className="movie-details__title-wrapper">
-            <h1 className="movie-details__title">{title}</h1>
-            <Raiting raiting={raiting}/>
-          </div>
-          <div className="movie-details__overview">{overview}</div>
-          <div className="movie-details__time-wrapper">
-            <div className="movie-details__time">{year}</div>
-            <div className="movie-details__time">{duration}</div>
-          </div>
-          <p className="movie-details__description">{description}</p>
+    <>
+      <HeaderMovieDetails movie={movie} />
+      <main className="home-page__main">
+        <div className="home-page__filter">
+          <FilterBar></FilterBar>
         </div>
-      </div>
-    </header>
+        <div className="home-page__films">
+          {movies.map((item, index) => (
+          <div key={index} className="home-page__film">
+            <Film year={item.year} title={item.title} category={item.category}></Film>
+          </div>
+          ))}
+        </div>
+      </main>
+      <Footer></Footer>
+    </>
   )
 }

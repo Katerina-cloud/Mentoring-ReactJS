@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Footer, FilterBar, Film } from '../../components/';
+import { Header, Footer, FilterBar, Film } from '../../components/';
 import { movieData } from '../../mock-data';
 
 export const HomePage = () => {
@@ -11,6 +11,7 @@ export const HomePage = () => {
 
   return (
     <>
+      <Header />
       <main className="home-page__main">
         <div className="home-page__filter">
           <FilterBar></FilterBar>
@@ -23,9 +24,7 @@ export const HomePage = () => {
           ))}
         </div>
       </main>
-      <footer>
-        <Footer></Footer>
-      </footer>
+      <Footer></Footer>
     </>
   )
 }
