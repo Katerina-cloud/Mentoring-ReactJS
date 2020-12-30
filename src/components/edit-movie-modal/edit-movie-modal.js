@@ -39,6 +39,39 @@ export const EditMovieModal = ({ isOpen, toggleOpen }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { id, title, URL, overview, runTime, releaseDate } = state;
 
+  const inputsData = [
+    {
+      name: 'id',
+      value: id,
+      placeholder: 'Id',
+      label: 'Movie id',
+    },
+    {
+      name: 'title',
+      value: title,
+      placeholder: 'Title',
+      label: 'Title',
+    },
+    {
+      name: 'URL',
+      value: URL,
+      placeholder: 'Movie URL here',
+      label: 'Movie URL',
+    },
+    {
+      name: 'overview',
+      value: overview,
+      placeholder: 'Overview here',
+      label: 'Overview',
+    },
+    {
+      name: 'runTime',
+      value: runTime,
+      placeholder: 'Run time here',
+      label: 'Run time',
+    },
+  ];
+
   const handleChange = (e) => {
     e.preventDefault();
     dispatch({
@@ -76,51 +109,17 @@ export const EditMovieModal = ({ isOpen, toggleOpen }) => {
           onCancel={handleEditCancel}
         >
           <form>
-            <div className="edit-movie__input">
-              <FormInput
-                name="id"
-                value={id}
-                onChange={handleChange}
-                placeholder="Id"
-                label="Movie id"
-              />
-            </div>
-            <div className="edit-movie__input">
-              <FormInput
-                name="title"
-                value={title}
-                onChange={handleChange}
-                placeholder="Title"
-                label="Title"
-              />
-            </div>
-            <div className="edit-movie__input">
-              <FormInput
-                name="URL"
-                value={URL}
-                onChange={handleChange}
-                placeholder="Movie URL here"
-                label="Movie URL"
-              />
-            </div>
-            <div className="edit-movie__input">
-              <FormInput
-                name="overview"
-                value={overview}
-                onChange={handleChange}
-                placeholder="Overview here"
-                label="Overview"
-              />
-            </div>
-            <div className="edit-movie__input">
-              <FormInput
-                name="runTime"
-                value={runTime}
-                onChange={handleChange}
-                placeholder="Run time here"
-                label="Run time"
-              />
-            </div>
+            {inputsData.map((input) => (
+              <div className="edit-movie__input">
+                <FormInput
+                  name={input.name}
+                  value={input.value}
+                  onChange={handleChange}
+                  placeholder={input.placeholder}
+                  label={input.label}
+                />
+              </div>
+            ))}
             <div className="edit-movie__input">
               <FormDateInput
                 name="releaseDate"
