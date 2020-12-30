@@ -5,9 +5,7 @@ export const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
-    console.log(isModalOpen);
     setModalOpen(true);
-    console.log(isModalOpen);
   };
 
   const handleModalToggle = (isOpen) => {
