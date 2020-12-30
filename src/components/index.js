@@ -15,6 +15,8 @@ export { FormDateInput } from './form-date-input';
 export { AddMovieModalContent } from './add-movie-modal-content';
 export { EditMovieModalContent } from './edit-movie-modal-content';
 export { EditMovieModal } from './edit-movie-modal';
+export { DeleteMovieModal } from './delete-movie-modal';
+export { AddMovieModal } from './add-movie-modal';
 export { Portal } from './portal';
 export { Modal } from './modal';
 export { Raiting } from './raiting';

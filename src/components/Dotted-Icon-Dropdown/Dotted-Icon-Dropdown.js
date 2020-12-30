@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DottedIcon } from '../../assets/icons/dotted-icon';
-import {  Modal, EditMovieModal } from '../../components';
+import {  DeleteMovieModal, EditMovieModal } from '../../components';
  
 export const DottedIconDropdown = () => {
 
@@ -14,14 +14,13 @@ export const DottedIconDropdown = () => {
   const openDeleteModal = () => {
     setDeleteModalOpen(true);
   }
-  const handleDeleteSubmit = () => {
-    console.log("handleDeleteSubmit function!");
-    setDeleteModalOpen(false);
-  }
-  const handleDeleteCancel = () => setDeleteModalOpen(false);
 
   const handleEditToggle = (isOpen) => {
     setEditModalOpen(!isOpen);
+  };
+
+  const handleDeleteToggle = (isOpen) => {
+    setDeleteModalOpen(!isOpen);
   };
 
   const handleEditModal = () => {
@@ -38,14 +37,7 @@ export const DottedIconDropdown = () => {
         <div onClick={handleEditModal} className="dotted-icon-dropdown__option">Edit</div>
         <div onClick={openDeleteModal} className="dotted-icon-dropdown__option">Delete</div>
         <EditMovieModal isOpen={isEditModalOpen} toggleOpen={handleEditToggle} />
-        {isDeleteModalOpen && <Modal
-          title="DELETE MOVIE"
-          secondButtonTitle = "Confirm"
-          onSubmit={handleDeleteSubmit}
-          onCancel={handleDeleteCancel}
-        >
-          <p className="dotted-icon-dropdown__paragraph">Are you sure you want to delete this movie?</p>
-        </Modal>}
+        <DeleteMovieModal isOpen={isDeleteModalOpen} toggleOpen={handleDeleteToggle} />
       </div>}
     </div>
   )
