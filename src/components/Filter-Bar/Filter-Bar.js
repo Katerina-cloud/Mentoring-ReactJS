@@ -1,21 +1,21 @@
-import React from "react";
-import { FilterButton, Dropdown } from "../../components/";
+import React from 'react';
+import { FilterButton, Dropdown } from '../../components/';
 
 const data = [
   {
-    title: "All",
+    title: 'All',
   },
   {
-    title: "Documentary",
+    title: 'Documentary',
   },
   {
-    title: "Comedy",
+    title: 'Comedy',
   },
   {
-    title: "Horror",
+    title: 'Horror',
   },
   {
-    title: "Crime",
+    title: 'Crime',
   },
 ];
 
@@ -26,14 +26,16 @@ export const FilterBar = () => {
         <div className="filter-bar__buttons">
           {data.map((item, index) => (
             <div key={index} className="filter-bar__button">
-              <FilterButton title={item.title}></FilterButton>
+              <FilterButton title={item.title} />
             </div>
           ))}
         </div>
-        <Dropdown></Dropdown>
+        <Dropdown />
       </div>
-      <div className="filter-bar__border"></div>
-      <div className="filter-bar__results"><span className="filter-bar__results--bold">39</span> movies found</div>
+      <div className="filter-bar__border" />
+      <div className="filter-bar__results">
+        <span className="filter-bar__results--bold">39</span> movies found
+      </div>
     </div>
-  )
-}
+  );
+};

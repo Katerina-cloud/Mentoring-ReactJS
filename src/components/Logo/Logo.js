@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const Logo = () => {
   return (
@@ -6,5 +6,5 @@ export const Logo = () => {
       <span className="logo--bold">netflix</span>
       <span>roulette</span>
     </div>
-  )
-}
+  );
+};

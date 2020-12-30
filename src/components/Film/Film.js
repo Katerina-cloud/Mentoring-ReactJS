@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import { DottedIconDropdown, Chip } from "../../components/";
+import { DottedIconDropdown, Chip } from '../../components/';
 
-export const Film = ({image, title, category, year}) => {
+export const Film = ({ title, category, year }) => {
   return (
     <div className="film">
-      <div className="film__image">
-      </div>
+      <div className="film__image" />
       <div className="film__dropdown">
         <DottedIconDropdown />
       </div>
@@ -15,14 +14,14 @@ export const Film = ({image, title, category, year}) => {
           <div className="film__title film__text">{title}</div>
           <div className="film__category film__text">{category}</div>
         </div>
-        <Chip year={year}></Chip>
+        <Chip year={year} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 Film.propTypes = {
   title: PropTypes.string,
   category: PropTypes.string,
-  year: PropTypes.string
+  year: PropTypes.string,
 };

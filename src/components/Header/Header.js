@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Logo, SearchBar, AddMovieModal } from "../../components/";
+import { Button, Logo, SearchBar, AddMovieModal } from '../../components/';
 
 export const Header = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
-    console.log(isOpen);
-    setOpen(true);
-    console.log(isOpen);
-  }
+    console.log(isModalOpen);
+    setModalOpen(true);
+    console.log(isModalOpen);
+  };
 
   const handleModalToggle = (isOpen) => {
-    setOpen(!isOpen);
+    setModalOpen(!isOpen);
   };
 
   return (
@@ -19,13 +19,18 @@ export const Header = () => {
       <div className="header__add-movie">
         <Logo />
         <div className="header__button">
-          <Button onClick={openModal} title="+Add movie" color="gray" textColor="red" />
+          <Button
+            onClick={openModal}
+            title="+Add movie"
+            color="gray"
+            textColor="red"
+          />
         </div>
-          <AddMovieModal isOpen={isOpen} toggleOpen={handleModalToggle} ></AddMovieModal>
+        <AddMovieModal isOpen={isModalOpen} toggleOpen={handleModalToggle} />
       </div>
       <div className="header__search-bar">
         <SearchBar />
       </div>
     </header>
-  )
-}
+  );
+};

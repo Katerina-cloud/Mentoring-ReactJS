@@ -11,5 +11,9 @@ module.exports = {
       }
     }
   ],
-  quoteProps: 'preserve'
+  quoteProps: 'preserve',
+  jsxBracketSameLine: false,
+  trailingComma: 'all',
+  tabWidth: 2,
+  endOfLine: 'auto',
 };

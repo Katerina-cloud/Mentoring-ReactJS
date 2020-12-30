@@ -12,8 +12,6 @@ export { Chip } from './chip';
 export { Logo } from './logo';
 export { FormInput } from './form-input';
 export { FormDateInput } from './form-date-input';
-export { AddMovieModalContent } from './add-movie-modal-content';
-export { EditMovieModalContent } from './edit-movie-modal-content';
 export { EditMovieModal } from './edit-movie-modal';
 export { DeleteMovieModal } from './delete-movie-modal';
 export { AddMovieModal } from './add-movie-modal';
