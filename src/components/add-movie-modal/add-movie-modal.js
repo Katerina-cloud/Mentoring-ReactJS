@@ -1,11 +1,6 @@
 import React, { useReducer, useCallback } from 'react';
 import { Modal, FormInput, FormDateInput } from '../../components';
-import {
-  FIRST_BUTTON_TITLE,
-  SECOND_BUTTON_TITLE,
-  ACTION_RESET,
-  ACTION_UPDATE,
-} from './consts';
+import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE, ACTION_RESET, ACTION_UPDATE } from './consts';
 
 const initialState = {
   id: '',

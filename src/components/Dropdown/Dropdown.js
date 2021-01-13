@@ -12,11 +12,7 @@ export const Dropdown = () => {
       <label htmlFor="films-sort" className="dropdown__label">
         Sort by
       </label>
-      <select
-        value={selected.value}
-        onChange={handleChange}
-        className="dropdown__select"
-      >
+      <select value={selected.value} onChange={handleChange} className="dropdown__select">
         <option className="dropdown__option" value="release date">
           release date
         </option>

@@ -17,12 +17,7 @@ export const Header = () => {
       <div className="header__add-movie">
         <Logo />
         <div className="header__button">
-          <Button
-            onClick={openModal}
-            title="+Add movie"
-            color="gray"
-            textColor="red"
-          />
+          <Button onClick={openModal} title="+Add movie" color="gray" textColor="red" />
         </div>
         <AddMovieModal isOpen={isModalOpen} toggleOpen={handleModalToggle} />
       </div>

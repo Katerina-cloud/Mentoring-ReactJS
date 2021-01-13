@@ -19,11 +19,7 @@ export const MovieDetails = ({ movie }) => {
         <div className="home-page__films">
           {movies.map((item, index) => (
             <div key={index} className="home-page__film">
-              <Film
-                year={item.year}
-                title={item.title}
-                category={item.category}
-              />
+              <Film year={item.year} title={item.title} category={item.category} />
             </div>
           ))}
         </div>

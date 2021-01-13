@@ -24,21 +24,11 @@ export const Modal = ({
         <div className="modal__footer">
           <div className="modal__button">
             {firstButtonTitle && (
-              <Button
-                onClick={onReset}
-                title={firstButtonTitle}
-                color="gray"
-                size="big"
-              />
+              <Button onClick={onReset} title={firstButtonTitle} color="gray" size="big" />
             )}
           </div>
           <div className="modal__button">
-            <Button
-              onClick={onSubmit}
-              title={secondButtonTitle}
-              color="red"
-              size="big"
-            />
+            <Button onClick={onSubmit} title={secondButtonTitle} color="red" size="big" />
           </div>
         </div>
       </div>

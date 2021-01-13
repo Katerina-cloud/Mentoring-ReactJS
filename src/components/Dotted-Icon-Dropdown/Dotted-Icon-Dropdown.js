@@ -33,32 +33,17 @@ export const DottedIconDropdown = () => {
       </div>
       {isDropdownOpen && (
         <div className="dotted-icon-dropdown__pop-up">
-          <button
-            onClick={hideDropdown}
-            className="dotted-icon-dropdown__close-icon"
-          >
+          <button onClick={hideDropdown} className="dotted-icon-dropdown__close-icon">
             X
           </button>
-          <div
-            onClick={handleEditModal}
-            className="dotted-icon-dropdown__option"
-          >
+          <div onClick={handleEditModal} className="dotted-icon-dropdown__option">
             Edit
           </div>
-          <div
-            onClick={openDeleteModal}
-            className="dotted-icon-dropdown__option"
-          >
+          <div onClick={openDeleteModal} className="dotted-icon-dropdown__option">
             Delete
           </div>
-          <EditMovieModal
-            isOpen={isEditModalOpen}
-            toggleOpen={handleEditToggle}
-          />
-          <DeleteMovieModal
-            isOpen={isDeleteModalOpen}
-            toggleOpen={handleDeleteToggle}
-          />
+          <EditMovieModal isOpen={isEditModalOpen} toggleOpen={handleEditToggle} />
+          <DeleteMovieModal isOpen={isDeleteModalOpen} toggleOpen={handleDeleteToggle} />
         </div>
       )}
     </div>

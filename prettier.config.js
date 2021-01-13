@@ -2,14 +2,14 @@ module.exports = {
   singleQuote: true,
   bracketSpacing: true,
   arrowParens: 'always',
-  printWidth: 80,
+  printWidth: 100,
   overrides: [
     {
       files: '*.scss',
       options: {
-        singleQuote: false
-      }
-    }
+        singleQuote: false,
+      },
+    },
   ],
   quoteProps: 'preserve',
   jsxBracketSameLine: false,
