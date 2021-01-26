@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { HeaderMovieDetails, Footer, FilterBar, Film } from '../../components/';
-import { movieData } from '../../mock-data';
+import { fetchMovies } from '../../store/actions/movies';
 
 export const MovieDetails = ({ movie }) => {
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.moviesData.movies);
+  console.log(movies);
 
   useEffect(() => {
-    setMovies(movieData);
-  }, []);
+    dispatch(fetchMovies());
+  }, [dispatch]);
 
   return (
     <>
@@ -17,11 +20,17 @@ export const MovieDetails = ({ movie }) => {
           <FilterBar />
         </div>
         <div className="home-page__films">
-          {movies.map((item, index) => (
-            <div key={index} className="home-page__film">
-              <Film year={item.year} title={item.title} category={item.category} />
-            </div>
-          ))}
+          {movies &&
+            movies.map((item, index) => (
+              <div key={index} className="home-page__film">
+                <Film
+                  year={item.release_date}
+                  title={item.title}
+                  genres={item.genres}
+                  imageSource={item.poster_path}
+                />
+              </div>
+            ))}
         </div>
       </main>
       <Footer />

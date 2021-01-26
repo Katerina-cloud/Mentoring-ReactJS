@@ -1,0 +1,18 @@
+.edit-movie-container {
+  &__input {
+    margin-bottom: 25px;
+  }
+
+  &__footer {
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+  }
+
+  &__button {
+    flex-basis: 48%;
+    width: 50%;
+  }
+}

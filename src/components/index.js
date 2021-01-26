@@ -20,3 +20,4 @@ export { Modal } from './modal';
 export { Raiting } from './raiting';
 export { MovieDetails } from './movie-details';
 export { HeaderMovieDetails } from './header-movie-details';
+export { EditMovieContainer } from './edit-movie-container';

@@ -45,17 +45,4 @@
     color: $color-white;
     margin-bottom: 20px;
   }
-
-  &__footer {
-    align-self: flex-end;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 60%;
-  }
-
-  &__button {
-    flex-basis: 48%;
-    width: 50%;
-  }
 }

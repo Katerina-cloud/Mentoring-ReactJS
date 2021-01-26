@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
 import { DottedIcon } from '../../assets/icons/dotted-icon';
-import { DeleteMovieModal, EditMovieModal } from '../../components';
 
-export const DottedIconDropdown = () => {
+export const DottedIconDropdown = ({ openEditModal, openDeleteModal }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   const showDropdown = () => setDropdownOpen(true);
   const hideDropdown = () => setDropdownOpen(false);
 
-  const openDeleteModal = () => {
-    setDeleteModalOpen(true);
-  };
-
-  const handleEditToggle = (isOpen) => {
-    setEditModalOpen(!isOpen);
-  };
-
-  const handleDeleteToggle = (isOpen) => {
-    setDeleteModalOpen(!isOpen);
-  };
-
   const handleEditModal = () => {
-    setEditModalOpen(true);
+    openEditModal();
+    hideDropdown();
+  };
+
+  const handleDeleteModal = () => {
+    openDeleteModal();
+    hideDropdown();
   };
 
   return (
@@ -39,11 +30,9 @@ export const DottedIconDropdown = () => {
           <div onClick={handleEditModal} className="dotted-icon-dropdown__option">
             Edit
           </div>
-          <div onClick={openDeleteModal} className="dotted-icon-dropdown__option">
+          <div onClick={handleDeleteModal} className="dotted-icon-dropdown__option">
             Delete
           </div>
-          <EditMovieModal isOpen={isEditModalOpen} toggleOpen={handleEditToggle} />
-          <DeleteMovieModal isOpen={isDeleteModalOpen} toggleOpen={handleDeleteToggle} />
         </div>
       )}
     </div>

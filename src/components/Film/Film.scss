@@ -6,7 +6,7 @@
   &__image {
     width: 400px;
     height: 550px;
-    background-color: $color-primary;
+    min-height: 550px;
     margin-bottom: 25px;
   }
   &__text {
