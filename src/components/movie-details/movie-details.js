@@ -6,7 +6,6 @@ import { fetchMovies } from '../../store/actions/movies';
 export const MovieDetails = ({ movie }) => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.moviesData.movies);
-  console.log(movies);
 
   useEffect(() => {
     dispatch(fetchMovies());

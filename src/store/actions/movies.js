@@ -1,19 +1,92 @@
 // import axios from 'axios';
-import { MOVIES_LOAD, MOVIES_SUCCESS } from '../action-types/';
+import {
+  MOVIES_LOAD,
+  MOVIES_SUCCESS,
+  MOVIES_FAIL,
+  SET_EDIT_MOVIE,
+  CLEAR_EDIT_MOVIE,
+  SET_DELETE_MOVIE,
+  CLEAR_DELETE_MOVIE,
+  DELETE_MOVIE,
+  DELETE_MOVIE_SUCCESS,
+  DELETE_MOVIE_FAIL,
+} from '../action-types/';
 import { FETCH_MOVIES_API_URL } from '../../const/';
 
 export const fetchMovies = () => {
   return async (dispatch) => {
     dispatch({ type: MOVIES_LOAD });
-    const response = await fetch(FETCH_MOVIES_API_URL);
-    const data = await response.json();
+    try {
+      const response = await fetch(FETCH_MOVIES_API_URL);
+      const data = await response.json();
+
+      dispatch({
+        type: MOVIES_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: MOVIES_FAIL,
+        payload: err,
+      });
+    }
+  };
+};
+
+export const setEditMovie = (movie) => {
+  return (dispatch) => {
     dispatch({
-      type: MOVIES_SUCCESS,
-      payload: data,
+      type: SET_EDIT_MOVIE,
+      payload: movie,
     });
   };
 };
 
+export const clearEditMovie = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_EDIT_MOVIE,
+    });
+  };
+};
+
+export const setDeleteMovie = (movie) => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_DELETE_MOVIE,
+      payload: movie,
+    });
+  };
+};
+
+export const clearDeleteMovie = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_DELETE_MOVIE,
+    });
+  };
+};
+
+export const deleteMovie = (movieId) => {
+  return async (dispatch) => {
+    dispatch({ type: DELETE_MOVIE });
+    try {
+      await fetch(FETCH_MOVIES_API_URL + String(movieId), {
+        method: 'DELETE',
+      });
+
+      dispatch({
+        type: DELETE_MOVIE_SUCCESS,
+        payload: movieId,
+      });
+    } catch (err) {
+      dispatch({
+        type: DELETE_MOVIE_FAIL,
+        payload: err,
+      });
+    }
+  };
+};
 // export const fetchMovies = () => {
 //   return async (dispatch) => {
 //     try {

@@ -1,0 +1,14 @@
+.delete-movie-modal {
+  &__paragraph {
+    color: $color-white;
+    @include headline;
+  }
+  &__footer {
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__button {
+    width: 50%;
+  }
+}

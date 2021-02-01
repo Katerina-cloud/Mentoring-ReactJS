@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { DottedIconDropdown, Chip } from '../../components/';
-import { DeleteMovieModal, EditMovieModal } from '../../components';
 
-export const Film = ({ title, genres, year, imageSource }) => {
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
-
+export const Film = ({ title, genres, year, imageSource, openDeleteMovie, openEditMovie }) => {
   let genresString;
   let yearToRender;
   if (genres) {
@@ -14,19 +10,11 @@ export const Film = ({ title, genres, year, imageSource }) => {
     yearToRender = year.split('-')[0];
   }
 
-  const handleEditToggle = () => {
-    setEditModalOpen(!isEditModalOpen);
-  };
-
-  const handleDeleteToggle = () => {
-    setDeleteModalOpen(!isDeleteModalOpen);
-  };
-
   return (
     <div className="film">
       <img src={imageSource} className="film__image" alt={`${title} poster`} />
       <div className="film__dropdown">
-        <DottedIconDropdown openEditModal={handleEditToggle} openDeleteModal={handleDeleteToggle} />
+        <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />
       </div>
       <div className="film__footer">
         <div>
@@ -35,8 +23,6 @@ export const Film = ({ title, genres, year, imageSource }) => {
         </div>
         <Chip year={yearToRender} />
       </div>
-      <EditMovieModal isOpen={isEditModalOpen} toggleOpen={handleEditToggle} />
-      <DeleteMovieModal isOpen={isDeleteModalOpen} toggleOpen={handleDeleteToggle} />
     </div>
   );
 };

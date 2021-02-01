@@ -1,65 +1,69 @@
 import React, { useReducer } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FormInput, FormDateInput, Button } from '..';
 import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
+import { clearEditMovie } from '../../store/actions/movies';
 
-const initialState = {
-  id: {
-    name: 'id',
-    value: '',
-    placeholder: 'Id',
-    label: 'Movie id',
-  },
-  title: {
-    name: 'title',
-    value: '',
-    placeholder: 'Title',
-    label: 'Title',
-  },
-  URL: {
-    name: 'URL',
-    value: '',
-    placeholder: 'Movie URL here',
-    label: 'Movie URL',
-  },
-  overview: {
-    name: 'overview',
-    value: '',
-    placeholder: 'Overview here',
-    label: 'Overview',
-  },
-  runTime: {
-    name: 'runTime',
-    value: '',
-    placeholder: 'Run time here',
-    label: 'Run time',
-  },
-};
+export const EditMovieContainer = () => {
+  const movieToEdit = useSelector((state) => state.moviesData.editMovie);
+  const { id, title, runtime, overview, release_date } = movieToEdit;
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case ACTION_UPDATE:
-      // eslint-disable-next-line no-case-declarations
-      const { field, value } = action.payload;
-      // eslint-disable-next-line no-case-declarations
-      const elementToUpdate = state[field];
-      elementToUpdate.value = value;
+  const initialState = {
+    id: {
+      name: 'id',
+      value: id,
+      placeholder: 'Id',
+      label: 'Movie id',
+    },
+    title: {
+      name: 'title',
+      value: title,
+      placeholder: 'Title',
+      label: 'Title',
+    },
+    URL: {
+      name: 'URL',
+      value: '',
+      placeholder: 'Movie URL here',
+      label: 'Movie URL',
+    },
+    overview: {
+      name: 'overview',
+      value: overview,
+      placeholder: 'Overview here',
+      label: 'Overview',
+    },
+    runTime: {
+      name: 'runTime',
+      value: runtime,
+      placeholder: 'Run time here',
+      label: 'Run time',
+    },
+  };
 
-      return {
-        ...state,
-        [field]: elementToUpdate,
-      };
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case ACTION_UPDATE:
+        // eslint-disable-next-line no-case-declarations
+        const { field, value } = action.payload;
+        // eslint-disable-next-line no-case-declarations
+        const elementToUpdate = state[field];
+        elementToUpdate.value = value;
 
-    case ACTION_RESET:
-      return action.payload;
+        return {
+          ...state,
+          [field]: elementToUpdate,
+        };
 
-    default:
-      break;
-  }
-};
+      case ACTION_RESET:
+        return action.payload;
 
-export const EditMovieContainer = ({ toggleOpen, isOpen }) => {
+      default:
+        break;
+    }
+  };
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const { id, title, URL, overview, runTime, releaseDate } = state;
+  const dispatchRedux = useDispatch();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -70,18 +74,14 @@ export const EditMovieContainer = ({ toggleOpen, isOpen }) => {
         value: e.target.value,
       },
     });
-    console.log(state);
   };
 
   const handleEditReset = () => {
     dispatch({ type: ACTION_RESET, payload: initialState });
-    console.log(state);
-    console.log('handleEditReset!');
   };
 
   const handleEditSubmit = () => {
-    console.log(state);
-    toggleOpen(isOpen);
+    dispatchRedux(clearEditMovie());
   };
 
   return (
@@ -99,7 +99,12 @@ export const EditMovieContainer = ({ toggleOpen, isOpen }) => {
         </div>
       ))}
       <div className="edit-movie-container__input">
-        <FormDateInput name="releaseDate" value="" onChange={handleChange} label="Release date" />
+        <FormDateInput
+          name="releaseDate"
+          value={release_date}
+          onChange={handleChange}
+          label="Release date"
+        />
       </div>
       <div className="edit-movie-container__footer">
         <div className="edit-movie-container__button">
