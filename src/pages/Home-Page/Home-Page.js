@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovies, setEditMovie, setDeleteMovie } from '../../store/actions/movies';
+import {
+  fetchMovies,
+  setEditMovie,
+  setDeleteMovie,
+  clearDeleteMovie,
+  deleteMovie,
+  clearEditMovie,
+  editMovie,
+} from '../../store/actions/movies';
 import {
   Header,
   Footer,
@@ -33,6 +41,19 @@ export const HomePage = () => {
     dispatch(setDeleteMovie(movie));
   };
 
+  const handleDeleteCancel = () => dispatch(clearDeleteMovie());
+  const handleDeleteSubmit = () => {
+    dispatch(deleteMovie(movieToDelete.id));
+    dispatch(clearDeleteMovie());
+  };
+
+  const handleEditCancel = () => dispatch(clearEditMovie());
+
+  const handleEditSubmit = () => {
+    dispatch(editMovie(movieToEdit.id));
+    dispatch(clearEditMovie());
+  };
+
   return (
     <>
       <Header />
@@ -58,8 +79,16 @@ export const HomePage = () => {
             </div>
           ))}
         </div>
-        <EditMovieModal isOpen={shouldOpenEditModal} />
-        <DeleteMovieModal isOpen={shouldOpenDeleteModal} />
+        <EditMovieModal
+          isOpen={shouldOpenEditModal}
+          handleEditCancel={handleEditCancel}
+          handleEditSubmit={handleEditSubmit}
+        />
+        <DeleteMovieModal
+          isOpen={shouldOpenDeleteModal}
+          handleDeleteCancel={handleDeleteCancel}
+          handleDeleteSubmit={handleDeleteSubmit}
+        />
       </main>
       <Footer />
     </>

@@ -1,19 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearDeleteMovie, deleteMovie } from '../../store/actions/movies';
 import { Modal, Button } from '../../components';
 import { SECOND_BUTTON_TITLE } from './consts';
 
-export const DeleteMovieModal = ({ isOpen }) => {
-  const dispatch = useDispatch();
-  const movieToDelete = useSelector((state) => state.moviesData.deleteMovie);
-
-  const handleDeleteCancel = () => dispatch(clearDeleteMovie());
-  const handleDeleteSubmit = () => {
-    dispatch(deleteMovie(movieToDelete.id));
-    dispatch(clearDeleteMovie());
-  };
-
+export const DeleteMovieModal = ({ isOpen, handleDeleteCancel, handleDeleteSubmit }) => {
   return (
     <>
       {isOpen && (

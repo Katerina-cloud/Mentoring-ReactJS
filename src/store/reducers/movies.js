@@ -7,6 +7,9 @@ import {
   DELETE_MOVIE,
   DELETE_MOVIE_SUCCESS,
   DELETE_MOVIE_FAIL,
+  EDIT_MOVIE_SUCCESS,
+  EDIT_MOVIE,
+  EDIT_MOVIE_FAIL,
 } from '../action-types/';
 
 const initialState = {
@@ -31,6 +34,19 @@ export const moviesReducer = (state = initialState, action) => {
       return {
         ...state,
         editMovie: null,
+      };
+    case EDIT_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movies: state.movies.findIndex(action.payload.id),
+      };
+    case EDIT_MOVIE:
+      return {
+        ...state,
+      };
+    case EDIT_MOVIE_FAIL:
+      return {
+        ...state,
       };
     case SET_DELETE_MOVIE:
       return {
