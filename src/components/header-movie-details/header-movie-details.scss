@@ -1,0 +1,47 @@
+.header-movie-details {
+  background-color: $color-primary-dark;
+  padding: 20px 5% 60px 5%;
+  border-bottom: 10px solid #555555;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  &__main {
+    display: flex;
+  }
+  &__image {
+    min-width: 350px;
+    height: 450px;
+  }
+  &__info {
+    padding: 0 60px;
+  }
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    @include extra-large-title;
+    color: $color-white;
+    margin: 0 20px 10px 0;
+  }
+  &__overview {
+    @include paragraph;
+    color: $color-white;
+  }
+  &__time-wrapper {
+    display: flex;
+    padding: 30px 0;
+  }
+  &__time {
+    @include title;
+    color: $color-secondary;
+    margin-right: 50px;
+  }
+  &__description {
+    @include headline;
+    color: $color-white;
+  }
+}

@@ -8,6 +8,9 @@ import {
   deleteMovie,
   clearEditMovie,
   editMovie,
+  setAddMovie,
+  clearAddMovie,
+  // addMovie,
 } from '../../store/actions/movies';
 import {
   Header,
@@ -16,6 +19,7 @@ import {
   Film,
   DeleteMovieModal,
   EditMovieModal,
+  AddMovieModal,
 } from '../../components/';
 
 export const HomePage = () => {
@@ -23,6 +27,7 @@ export const HomePage = () => {
   const movies = useSelector((state) => state.moviesData.movies);
   const movieToEdit = useSelector((state) => state.moviesData.editMovie);
   const movieToDelete = useSelector((state) => state.moviesData.deleteMovie);
+  const movieToAdd = useSelector((state) => state.moviesData.addMovie);
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -30,6 +35,7 @@ export const HomePage = () => {
 
   const shouldOpenEditModal = Boolean(movieToEdit);
   const shouldOpenDeleteModal = Boolean(movieToDelete);
+  const shouldOpenAddModal = Boolean(movieToAdd);
 
   const openEditMovie = (filmId) => {
     const movie = movies.find(({ id }) => id === filmId);
@@ -54,9 +60,21 @@ export const HomePage = () => {
     dispatch(clearEditMovie());
   };
 
+  const openAddMovie = () => {
+    dispatch(setAddMovie(true));
+  };
+  const handleAddCancel = () => {
+    dispatch(clearAddMovie(null));
+  };
+  const handleAddSubmit = () => {
+    // dispatch(addMovie(movieToAdd));
+    console.log('movieToAdd', movieToAdd);
+    dispatch(clearAddMovie(null));
+  };
+
   return (
     <>
-      <Header />
+      <Header openAddMovie={openAddMovie} />
       <main className="home-page__main">
         <div className="home-page__filter">
           <FilterBar />
@@ -89,8 +107,15 @@ export const HomePage = () => {
           handleDeleteCancel={handleDeleteCancel}
           handleDeleteSubmit={handleDeleteSubmit}
         />
+        <AddMovieModal
+          isOpen={shouldOpenAddModal}
+          handleAddCancel={handleAddCancel}
+          handleAddSubmit={handleAddSubmit}
+        />
       </main>
       <Footer />
     </>
   );
 };
+// 337167
+// 269149

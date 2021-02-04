@@ -10,17 +10,21 @@ import {
   EDIT_MOVIE_SUCCESS,
   EDIT_MOVIE,
   EDIT_MOVIE_FAIL,
+  CLEAR_ADD_MOVIE,
+  SET_ADD_MOVIE,
 } from '../action-types/';
 
 const initialState = {
   movies: [],
   editMovie: null,
   deleteMovie: null,
+  addMovie: null,
 };
 
 export const moviesReducer = (state = initialState, action) => {
   switch (action.type) {
     case MOVIES_SUCCESS:
+      console.log(action.payload.data);
       return {
         ...state,
         movies: action.payload.data,
@@ -70,6 +74,16 @@ export const moviesReducer = (state = initialState, action) => {
     case DELETE_MOVIE_FAIL:
       return {
         ...state,
+      };
+    case SET_ADD_MOVIE:
+      return {
+        ...state,
+        addMovie: action.payload,
+      };
+    case CLEAR_ADD_MOVIE:
+      return {
+        ...state,
+        addMovie: null,
       };
     default:
       return state;

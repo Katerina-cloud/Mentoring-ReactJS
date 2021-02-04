@@ -1,23 +1,23 @@
 import React, { useReducer } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { FormInput, FormDateInput, Button } from '..';
+import { useDispatch } from 'react-redux';
+import { FormInput, Button } from '../../components';
+// import { FormInput, FormDateInput, Button } from '../../components';
 import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { clearEditMovie } from '../../store/actions/movies';
+import { setAddMovie } from '../../store/actions/movies';
 
-export const EditMovieContainer = () => {
-  const movieToEdit = useSelector((state) => state.moviesData.editMovie);
-  const { id, title, runtime, overview, release_date } = movieToEdit;
+export const AddMovie = ({ handleAddSubmit }) => {
+  const dispatchRedux = useDispatch();
 
   const initialState = {
     id: {
       name: 'id',
-      value: id,
+      value: '',
       placeholder: 'Id',
       label: 'Movie id',
     },
     title: {
       name: 'title',
-      value: title,
+      value: '',
       placeholder: 'Title',
       label: 'Title',
     },
@@ -29,13 +29,13 @@ export const EditMovieContainer = () => {
     },
     overview: {
       name: 'overview',
-      value: overview,
+      value: '',
       placeholder: 'Overview here',
       label: 'Overview',
     },
     runTime: {
       name: 'runTime',
-      value: runtime,
+      value: '',
       placeholder: 'Run time here',
       label: 'Run time',
     },
@@ -63,7 +63,6 @@ export const EditMovieContainer = () => {
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const dispatchRedux = useDispatch();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -76,18 +75,28 @@ export const EditMovieContainer = () => {
     });
   };
 
-  const handleEditReset = () => {
+  const handleAddReset = () => {
     dispatch({ type: ACTION_RESET, payload: initialState });
   };
 
-  const handleEditSubmit = () => {
-    dispatchRedux(clearEditMovie());
+  const handleAddSubmitForm = () => {
+    const movieToAdd = {
+      id: state.id.value,
+      title: state.title.value,
+      // genres: state.genres.value,
+      overview: state.overview.value,
+      poster_path: state.URL.value,
+      runtime: state.runTime.value,
+    };
+
+    dispatchRedux(setAddMovie(movieToAdd));
+    handleAddSubmit();
   };
   console.log('state', state);
   return (
     <>
       {Object.keys(state).map((inputName, index) => (
-        <div className="edit-movie-container__input" key={index}>
+        <div className="add-movie__input" key={index}>
           <FormInput
             id={inputName}
             name={state[inputName].name}
@@ -98,20 +107,25 @@ export const EditMovieContainer = () => {
           />
         </div>
       ))}
-      <div className="edit-movie-container__input">
+      {/* <div className="add-movie__input">
         <FormDateInput
           name="releaseDate"
-          value={release_date}
+          value={releaseDate}
           onChange={handleChange}
           label="Release date"
         />
-      </div>
+      </div> */}
       <div className="edit-movie-container__footer">
         <div className="edit-movie-container__button">
-          <Button onClick={handleEditReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
+          <Button onClick={handleAddReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
         </div>
         <div className="edit-movie-container__button">
-          <Button onClick={handleEditSubmit} title={SECOND_BUTTON_TITLE} color="red" size="big" />
+          <Button
+            onClick={handleAddSubmitForm}
+            title={SECOND_BUTTON_TITLE}
+            color="red"
+            size="big"
+          />
         </div>
       </div>
     </>

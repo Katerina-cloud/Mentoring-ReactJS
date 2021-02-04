@@ -3,27 +3,32 @@ import { SearchIcon } from '../../assets/icons/search';
 import { Raiting, Logo } from '../../components/';
 
 export const HeaderMovieDetails = ({ movie }) => {
-  const { title, raiting, overview, year, duration, description } = movie;
-
+  const { title, vote_average, overview, release_date, runtime, imageSource, genres } = movie;
+  let genresString;
+  let yearToRender;
+  if (genres) {
+    genresString = genres.join(', ');
+    yearToRender = release_date.split('-')[0];
+  }
   return (
-    <header className="movie-details">
-      <div className="movie-details__header">
+    <header className="header-movie-details">
+      <div className="header-movie-details__header">
         <Logo />
         <SearchIcon />
       </div>
-      <div className="movie-details__main">
-        <div className="movie-details__image" />
-        <div className="movie-details__info">
-          <div className="movie-details__title-wrapper">
-            <h1 className="movie-details__title">{title}</h1>
-            <Raiting raiting={raiting} />
+      <div className="header-movie-details__main">
+        <img src={imageSource} className="header-movie-details__image" alt={`${title} poster`} />
+        <div className="header-movie-details__info">
+          <div className="header-movie-details__title-wrapper">
+            <h1 className="header-movie-details__title">{title}</h1>
+            <Raiting raiting={vote_average} />
           </div>
-          <div className="movie-details__overview">{overview}</div>
-          <div className="movie-details__time-wrapper">
-            <div className="movie-details__time">{year}</div>
-            <div className="movie-details__time">{duration}</div>
+          <div className="header-movie-details__overview">{genresString}</div>
+          <div className="header-movie-details__time-wrapper">
+            <div className="header-movie-details__time">{yearToRender}</div>
+            <div className="header-movie-details__time">{runtime}</div>
           </div>
-          <p className="movie-details__description">{description}</p>
+          <p className="header-movie-details__description">{overview}</p>
         </div>
       </div>
     </header>

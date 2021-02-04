@@ -10,6 +10,9 @@ import {
   DELETE_MOVIE,
   DELETE_MOVIE_SUCCESS,
   DELETE_MOVIE_FAIL,
+  CLEAR_ADD_MOVIE,
+  SET_ADD_MOVIE,
+  ADD_MOVIE,
 } from '../action-types/';
 import { FETCH_MOVIES_API_URL } from '../../const/';
 
@@ -85,6 +88,33 @@ export const deleteMovie = (movieId) => {
         payload: err,
       });
     }
+  };
+};
+
+export const setAddMovie = (movie) => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_ADD_MOVIE,
+      payload: movie,
+    });
+  };
+};
+
+export const clearAddMovie = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_ADD_MOVIE,
+    });
+  };
+};
+
+export const addMovie = (movie) => {
+  console.log('action ADD_MOVIE');
+  return (dispatch) => {
+    dispatch({
+      type: ADD_MOVIE,
+      payload: movie,
+    });
   };
 };
 // export const fetchMovies = () => {

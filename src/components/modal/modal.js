@@ -21,15 +21,11 @@ export const Modal = ({ title, onCancel, children }) => (
 Modal.propTypes = {
   title: PropTypes.string,
   onCancel: PropTypes.func,
-  onSubmit: PropTypes.func,
   children: PropTypes.node,
-  firstButtonTitle: PropTypes.string,
-  secondButtonTitle: PropTypes.string,
 };
 
 Modal.defaultProps = {
   title: '',
   onCancel: () => {},
-  onSubmit: () => {},
   children: null,
 };
