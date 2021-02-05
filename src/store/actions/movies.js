@@ -13,6 +13,8 @@ import {
   CLEAR_ADD_MOVIE,
   SET_ADD_MOVIE,
   ADD_MOVIE,
+  ADD_MOVIE_SUCCESS,
+  ADD_MOVIE_FAIL,
 } from '../action-types/';
 import { FETCH_MOVIES_API_URL } from '../../const/';
 
@@ -77,7 +79,6 @@ export const deleteMovie = (movieId) => {
       await fetch(FETCH_MOVIES_API_URL + String(movieId), {
         method: 'DELETE',
       });
-
       dispatch({
         type: DELETE_MOVIE_SUCCESS,
         payload: movieId,
@@ -109,12 +110,28 @@ export const clearAddMovie = () => {
 };
 
 export const addMovie = (movie) => {
-  console.log('action ADD_MOVIE');
-  return (dispatch) => {
-    dispatch({
-      type: ADD_MOVIE,
-      payload: movie,
-    });
+  return async (dispatch) => {
+    dispatch({ type: ADD_MOVIE });
+    try {
+      let response = await fetch(FETCH_MOVIES_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(movie),
+      });
+      let result = await response.json();
+
+      dispatch({
+        type: ADD_MOVIE_SUCCESS,
+        payload: result,
+      });
+    } catch (err) {
+      dispatch({
+        type: ADD_MOVIE_FAIL,
+        payload: err,
+      });
+    }
   };
 };
 // export const fetchMovies = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const FormInput = ({ id, key, label, placeholder, onChange, name, value }) => {
+export const FormInput = ({ id, label, placeholder, onChange, name, value }) => {
   return (
     <>
       {label && <label className="form-input__label">{label}</label>}

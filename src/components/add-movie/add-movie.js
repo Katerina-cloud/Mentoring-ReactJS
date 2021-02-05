@@ -1,20 +1,13 @@
 import React, { useReducer } from 'react';
 import { useDispatch } from 'react-redux';
-import { FormInput, Button } from '../../components';
-// import { FormInput, FormDateInput, Button } from '../../components';
+import { FormInput, FormDateInput, Button } from '../../components';
 import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { setAddMovie } from '../../store/actions/movies';
+import { setAddMovie, clearAddMovie, addMovie } from '../../store/actions/movies';
 
 export const AddMovie = ({ handleAddSubmit }) => {
   const dispatchRedux = useDispatch();
 
   const initialState = {
-    id: {
-      name: 'id',
-      value: '',
-      placeholder: 'Id',
-      label: 'Movie id',
-    },
     title: {
       name: 'title',
       value: '',
@@ -38,6 +31,18 @@ export const AddMovie = ({ handleAddSubmit }) => {
       value: '',
       placeholder: 'Run time here',
       label: 'Run time',
+    },
+    genres: {
+      name: 'genres',
+      value: '',
+      placeholder: '',
+      label: 'Genres',
+    },
+    release_date: {
+      name: 'release_date',
+      value: '',
+      placeholder: '',
+      label: 'Release date',
     },
   };
 
@@ -81,40 +86,44 @@ export const AddMovie = ({ handleAddSubmit }) => {
 
   const handleAddSubmitForm = () => {
     const movieToAdd = {
-      id: state.id.value,
       title: state.title.value,
-      // genres: state.genres.value,
+      genres: state.genres.value.split(','),
       overview: state.overview.value,
       poster_path: state.URL.value,
-      runtime: state.runTime.value,
+      runtime: Number(state.runTime.value),
+      release_date: state.release_date.value,
     };
 
     dispatchRedux(setAddMovie(movieToAdd));
+    dispatchRedux(addMovie(movieToAdd));
+    dispatchRedux(clearAddMovie(null));
     handleAddSubmit();
   };
-  console.log('state', state);
+
   return (
     <>
-      {Object.keys(state).map((inputName, index) => (
-        <div className="add-movie__input" key={index}>
-          <FormInput
-            id={inputName}
-            name={state[inputName].name}
-            value={state[inputName].value}
-            onChange={handleChange}
-            placeholder={state[inputName].placeholder}
-            label={state[inputName].label}
-          />
-        </div>
-      ))}
-      {/* <div className="add-movie__input">
+      {Object.keys(state)
+        .filter((input) => input !== 'release_date')
+        .map((inputName, index) => (
+          <div className="add-movie__input" key={index}>
+            <FormInput
+              id={inputName}
+              name={state[inputName].name}
+              value={state[inputName].value}
+              onChange={handleChange}
+              placeholder={state[inputName].placeholder}
+              label={state[inputName].label}
+            />
+          </div>
+        ))}
+      <div className="add-movie__input">
         <FormDateInput
-          name="releaseDate"
-          value={releaseDate}
+          name={state.release_date.name}
+          value={state.release_date.value}
           onChange={handleChange}
-          label="Release date"
+          label={state.release_date.label}
         />
-      </div> */}
+      </div>
       <div className="edit-movie-container__footer">
         <div className="edit-movie-container__button">
           <Button onClick={handleAddReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />

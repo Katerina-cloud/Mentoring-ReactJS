@@ -14,5 +14,5 @@ export const EDIT_MOVIE_SUCCESS = 'EDIT_MOVIE_SUCCESS';
 export const EDIT_MOVIE = 'EDIT_MOVIE';
 export const EDIT_MOVIE_FAIL = 'EDIT_MOVIE_FAIL';
 export const ADD_MOVIE_SUCCESS = 'ADD_MOVIE_SUCCESS';
-export const ADDT_MOVIE = 'ADDT_MOVIE';
+export const ADD_MOVIE = 'ADD_MOVIE';
 export const ADD_MOVIE_FAIL = 'ADD_MOVIE_FAIL';

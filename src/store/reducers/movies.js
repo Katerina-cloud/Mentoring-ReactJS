@@ -12,6 +12,9 @@ import {
   EDIT_MOVIE_FAIL,
   CLEAR_ADD_MOVIE,
   SET_ADD_MOVIE,
+  ADD_MOVIE,
+  ADD_MOVIE_SUCCESS,
+  ADD_MOVIE_FAIL,
 } from '../action-types/';
 
 const initialState = {
@@ -19,6 +22,7 @@ const initialState = {
   editMovie: null,
   deleteMovie: null,
   addMovie: null,
+  error: null,
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -51,6 +55,7 @@ export const moviesReducer = (state = initialState, action) => {
     case EDIT_MOVIE_FAIL:
       return {
         ...state,
+        error: action.payload,
       };
     case SET_DELETE_MOVIE:
       return {
@@ -74,6 +79,7 @@ export const moviesReducer = (state = initialState, action) => {
     case DELETE_MOVIE_FAIL:
       return {
         ...state,
+        error: action.payload,
       };
     case SET_ADD_MOVIE:
       return {
@@ -84,6 +90,20 @@ export const moviesReducer = (state = initialState, action) => {
       return {
         ...state,
         addMovie: null,
+      };
+    case ADD_MOVIE:
+      return {
+        ...state,
+      };
+    case ADD_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movies: [...state.movies, action.payload],
+      };
+    case ADD_MOVIE_FAIL:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

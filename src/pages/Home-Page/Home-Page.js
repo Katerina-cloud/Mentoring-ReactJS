@@ -68,8 +68,7 @@ export const HomePage = () => {
   };
   const handleAddSubmit = () => {
     // dispatch(addMovie(movieToAdd));
-    console.log('movieToAdd', movieToAdd);
-    dispatch(clearAddMovie(null));
+    // dispatch(clearAddMovie(null));
   };
 
   return (
