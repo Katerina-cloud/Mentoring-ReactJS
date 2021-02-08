@@ -26,6 +26,7 @@ const initialState = {
 };
 
 export const moviesReducer = (state = initialState, action) => {
+  let newMovies;
   switch (action.type) {
     case MOVIES_SUCCESS:
       console.log(action.payload.data);
@@ -44,9 +45,11 @@ export const moviesReducer = (state = initialState, action) => {
         editMovie: null,
       };
     case EDIT_MOVIE_SUCCESS:
+      newMovies = [...state.movies];
+      newMovies[newMovies.findIndex((movie) => movie.id === action.payload.id)] = action.payload;
       return {
         ...state,
-        movies: state.movies.findIndex(action.payload.id),
+        movies: newMovies,
       };
     case EDIT_MOVIE:
       return {

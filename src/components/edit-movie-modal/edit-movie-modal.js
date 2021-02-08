@@ -1,12 +1,12 @@
 import React from 'react';
-import { Modal, EditMovieContainer } from '..';
+import { Modal, EditMovie } from '..';
 
-export const EditMovieModal = ({ isOpen, handleEditCancel }) => {
+export const EditMovieModal = ({ isOpen, handleEditCancel, handleEditSubmit }) => {
   return (
     <>
       {isOpen && (
         <Modal title="EDIT MOVIE" onCancel={handleEditCancel}>
-          <EditMovieContainer />
+          <EditMovie handleEditSubmit={handleEditSubmit} />
         </Modal>
       )}
     </>

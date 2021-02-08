@@ -7,7 +7,7 @@ import {
   clearDeleteMovie,
   deleteMovie,
   clearEditMovie,
-  editMovie,
+  // editMovie,
   setAddMovie,
   clearAddMovie,
   // addMovie,
@@ -56,8 +56,7 @@ export const HomePage = () => {
   const handleEditCancel = () => dispatch(clearEditMovie());
 
   const handleEditSubmit = () => {
-    dispatch(editMovie(movieToEdit.id));
-    dispatch(clearEditMovie());
+    // dispatch(editMovie(movieToEdit));
   };
 
   const openAddMovie = () => {

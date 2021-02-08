@@ -15,6 +15,9 @@ import {
   ADD_MOVIE,
   ADD_MOVIE_SUCCESS,
   ADD_MOVIE_FAIL,
+  EDIT_MOVIE_SUCCESS,
+  EDIT_MOVIE,
+  EDIT_MOVIE_FAIL,
 } from '../action-types/';
 import { FETCH_MOVIES_API_URL } from '../../const/';
 
@@ -52,6 +55,39 @@ export const clearEditMovie = () => {
     dispatch({
       type: CLEAR_EDIT_MOVIE,
     });
+  };
+};
+
+export const editMovie = (movie) => {
+  return async (dispatch) => {
+    dispatch({ type: EDIT_MOVIE });
+    try {
+      let response = await fetch(FETCH_MOVIES_API_URL, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(movie),
+      });
+
+      if (response.ok) {
+        let result = await response.json();
+        dispatch({
+          type: EDIT_MOVIE_SUCCESS,
+          payload: result,
+        });
+      } else {
+        dispatch({
+          type: EDIT_MOVIE_FAIL,
+          payload: response.status,
+        });
+      }
+    } catch (error) {
+      dispatch({
+        type: EDIT_MOVIE_FAIL,
+        payload: error,
+      });
+    }
   };
 };
 
@@ -120,16 +156,24 @@ export const addMovie = (movie) => {
         },
         body: JSON.stringify(movie),
       });
-      let result = await response.json();
 
-      dispatch({
-        type: ADD_MOVIE_SUCCESS,
-        payload: result,
-      });
-    } catch (err) {
+      if (response.ok) {
+        let result = await response.json();
+
+        dispatch({
+          type: ADD_MOVIE_SUCCESS,
+          payload: result,
+        });
+      } else {
+        dispatch({
+          type: ADD_MOVIE_FAIL,
+          payload: response.status,
+        });
+      }
+    } catch (error) {
       dispatch({
         type: ADD_MOVIE_FAIL,
-        payload: err,
+        payload: error,
       });
     }
   };

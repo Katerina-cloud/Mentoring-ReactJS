@@ -15,7 +15,6 @@ import {
   clearDeleteMovie,
   deleteMovie,
   clearEditMovie,
-  editMovie,
 } from '../../store/actions/movies';
 
 export const MovieDetailsPage = ({ movie }) => {
@@ -51,7 +50,6 @@ export const MovieDetailsPage = ({ movie }) => {
   const handleEditCancel = () => dispatch(clearEditMovie());
 
   const handleEditSubmit = () => {
-    dispatch(editMovie(movieToEdit.id));
     dispatch(clearEditMovie());
   };
 

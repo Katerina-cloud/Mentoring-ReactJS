@@ -1,26 +1,28 @@
 import React, { useReducer } from 'react';
-import { useDispatch } from 'react-redux';
-import { FormInput, FormDateInput, Button } from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
+import { FormInput, FormDateInput, Button } from '..';
 import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { setAddMovie, clearAddMovie, addMovie } from '../../store/actions/movies';
+import { clearEditMovie, setEditMovie, editMovie } from '../../store/actions/movies';
 
-export const AddMovie = ({ handleAddSubmit }) => {
-  const dispatchRedux = useDispatch();
+export const EditMovie = ({ handleEditSubmit }) => {
+  const movieToEdit = useSelector((state) => state.moviesData.editMovie);
+  const { id, title, runtime, overview, poster_path, release_date, genres } = movieToEdit;
 
   const initialState = {
-    title: '',
-    poster_path: '',
-    overview: '',
-    runtime: '',
-    genres: '',
-    release_date: undefined,
+    id: id,
+    title,
+    poster_path,
+    runtime,
+    overview,
+    release_date,
+    genres,
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
       case ACTION_UPDATE:
         // eslint-disable-next-line no-case-declarations
-        const { field, value } = action.payload;
+        let { field, value } = action.payload;
         // eslint-disable-next-line no-case-declarations
         let elementToUpdate = state[field];
         elementToUpdate = value;
@@ -38,8 +40,10 @@ export const AddMovie = ({ handleAddSubmit }) => {
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
+  const dispatchRedux = useDispatch();
 
   const handleChange = (e) => {
+    console.log(state);
     e.preventDefault();
     dispatch({
       type: ACTION_UPDATE,
@@ -50,28 +54,35 @@ export const AddMovie = ({ handleAddSubmit }) => {
     });
   };
 
-  const handleAddReset = () => {
+  const handleEditReset = () => {
     dispatch({ type: ACTION_RESET, payload: initialState });
   };
 
-  const handleAddSubmitForm = () => {
-    const movieToAdd = {
+  const handleEditSubmitForm = () => {
+    const movieEdit = {
       ...state,
-      genres: state.genres.split(','),
       runtime: Number(state.runtime),
     };
-
-    dispatchRedux(setAddMovie(movieToAdd));
-    dispatchRedux(addMovie(movieToAdd));
-    dispatchRedux(clearAddMovie(null));
-    handleAddSubmit();
+    dispatchRedux(setEditMovie(movieEdit));
+    dispatchRedux(editMovie(movieEdit));
+    dispatchRedux(clearEditMovie());
+    handleEditSubmit();
   };
-
   return (
     <>
-      <div className="add-movie__input">
+      <div className="edit-movie-container__input">
         <FormInput
-          id="title"
+          id="id-edit"
+          name="id"
+          value={state.id}
+          onChange={handleChange}
+          placeholder="Id"
+          label="Id"
+        />
+      </div>
+      <div className="edit-movie-container__input">
+        <FormInput
+          id="title-edit"
           name="title"
           value={state.title}
           onChange={handleChange}
@@ -79,19 +90,19 @@ export const AddMovie = ({ handleAddSubmit }) => {
           label="Title"
         />
       </div>
-      <div className="add-movie__input">
+      <div className="edit-movie-container__input">
         <FormInput
-          id="poster_path"
+          id="poster_path-edit"
           name="poster_path"
-          value={state.URL}
+          value={state.poster_path}
           onChange={handleChange}
           placeholder="Movie URL here"
           label="Movie URL"
         />
       </div>
-      <div className="add-movie__input">
+      <div className="edit-movie-container__input">
         <FormInput
-          id="overview"
+          id="overview-edit"
           name="overview"
           value={state.overview}
           onChange={handleChange}
@@ -99,9 +110,9 @@ export const AddMovie = ({ handleAddSubmit }) => {
           label="Overview"
         />
       </div>
-      <div className="add-movie__input">
+      <div className="edit-movie-container__input">
         <FormInput
-          id="runtime"
+          id="runtime-edit"
           name="runtime"
           value={state.runtime}
           onChange={handleChange}
@@ -109,9 +120,9 @@ export const AddMovie = ({ handleAddSubmit }) => {
           label="Run time"
         />
       </div>
-      <div className="add-movie__input">
+      <div className="edit-movie-container__input">
         <FormInput
-          id="genres"
+          id="genres-edit"
           name="genres"
           value={state.genres}
           onChange={handleChange}
@@ -119,7 +130,7 @@ export const AddMovie = ({ handleAddSubmit }) => {
           label="Genres"
         />
       </div>
-      <div className="add-movie__input">
+      <div className="edit-movie-container__input">
         <FormDateInput
           name="release_date"
           value={state.release_date}
@@ -129,11 +140,11 @@ export const AddMovie = ({ handleAddSubmit }) => {
       </div>
       <div className="edit-movie-container__footer">
         <div className="edit-movie-container__button">
-          <Button onClick={handleAddReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
+          <Button onClick={handleEditReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
         </div>
         <div className="edit-movie-container__button">
           <Button
-            onClick={handleAddSubmitForm}
+            onClick={handleEditSubmitForm}
             title={SECOND_BUTTON_TITLE}
             color="red"
             size="big"

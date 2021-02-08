@@ -19,5 +19,5 @@ export { Portal } from './portal';
 export { Modal } from './modal';
 export { Raiting } from './raiting';
 export { HeaderMovieDetails } from './header-movie-details';
-export { EditMovieContainer } from './edit-movie-container';
+export { EditMovie } from './edit-movie';
 export { AddMovie } from './add-movie';
