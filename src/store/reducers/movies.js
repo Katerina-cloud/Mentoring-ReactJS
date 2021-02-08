@@ -15,6 +15,8 @@ import {
   ADD_MOVIE,
   ADD_MOVIE_SUCCESS,
   ADD_MOVIE_FAIL,
+  SET_FILTER_BY_GENRE,
+  CLEAR_FILTER_BY_GENRE,
 } from '../action-types/';
 
 const initialState = {
@@ -23,6 +25,7 @@ const initialState = {
   deleteMovie: null,
   addMovie: null,
   error: null,
+  filterByGenre: null,
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -107,6 +110,16 @@ export const moviesReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case SET_FILTER_BY_GENRE:
+      return {
+        ...state,
+        filterByGenre: action.payload,
+      };
+    case CLEAR_FILTER_BY_GENRE:
+      return {
+        ...state,
+        filterByGenre: null,
       };
     default:
       return state;

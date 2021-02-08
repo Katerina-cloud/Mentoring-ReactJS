@@ -18,6 +18,8 @@ import {
   EDIT_MOVIE_SUCCESS,
   EDIT_MOVIE,
   EDIT_MOVIE_FAIL,
+  SET_FILTER_BY_GENRE,
+  CLEAR_FILTER_BY_GENRE,
 } from '../action-types/';
 import { FETCH_MOVIES_API_URL } from '../../const/';
 
@@ -176,6 +178,23 @@ export const addMovie = (movie) => {
         payload: error,
       });
     }
+  };
+};
+
+export const setFilterByGenre = (genre) => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_FILTER_BY_GENRE,
+      payload: genre,
+    });
+  };
+};
+
+export const clearFilterByGenre = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_FILTER_BY_GENRE,
+    });
   };
 };
 // export const fetchMovies = () => {

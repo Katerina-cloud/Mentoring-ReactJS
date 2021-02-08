@@ -24,10 +24,20 @@ import {
 
 export const HomePage = () => {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.moviesData.movies);
+  let movies = useSelector((state) => state.moviesData.movies);
+  const filterByGenre = useSelector((state) => state.moviesData.filterByGenre);
   const movieToEdit = useSelector((state) => state.moviesData.editMovie);
   const movieToDelete = useSelector((state) => state.moviesData.deleteMovie);
   const movieToAdd = useSelector((state) => state.moviesData.addMovie);
+
+  movies =
+    filterByGenre === (null || 'All')
+      ? movies
+      : movies.filter((movie) => {
+          return movie.genres.includes(filterByGenre);
+        });
+
+  console.log('movies filtered', movies);
 
   useEffect(() => {
     dispatch(fetchMovies());
