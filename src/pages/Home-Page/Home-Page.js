@@ -31,9 +31,11 @@ export const HomePage = () => {
   const movieToAdd = useSelector((state) => state.moviesData.addMovie);
 
   movies =
-    filterByGenre === (null || 'All')
+    filterByGenre === null || filterByGenre === 'All'
       ? movies
       : movies.filter((movie) => {
+          console.log('movie.genres', movie.genres);
+          console.log('filterByGenre', filterByGenre);
           return movie.genres.includes(filterByGenre);
         });
 
