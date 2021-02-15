@@ -25,7 +25,7 @@ import {
 } from '../../store/selectors/';
 
 export const MovieDetailsPage = () => {
-  const { id } = useParams();
+  const { searchId } = useParams();
   const dispatch = useDispatch();
   let { movies } = useSelector(selectMovies);
   const { filterGenre } = useSelector(selectFilterGenre);
@@ -45,10 +45,10 @@ export const MovieDetailsPage = () => {
     if (!movies.length) {
       dispatch(fetchMovies());
     }
-    const curMovie = movies.find((movie) => movie.id === +id);
+    const curMovie = movies.find(({ id }) => id === +searchId);
     setCurrentMovie(curMovie);
     window.scrollTo(0, 0);
-  }, [id, movies, dispatch]);
+  }, [searchId, movies, dispatch]);
 
   const shouldOpenEditModal = Boolean(movieToEdit);
   const shouldOpenDeleteModal = Boolean(movieToDelete);

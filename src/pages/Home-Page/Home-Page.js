@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   fetchMovies,
   setEditMovie,
@@ -30,6 +31,7 @@ import {
 } from '../../store/selectors/';
 
 export const HomePage = () => {
+  const { criteria } = useParams();
   const dispatch = useDispatch();
   let { movies } = useSelector(selectMovies);
   const { filterGenre } = useSelector(selectFilterGenre);
@@ -37,14 +39,18 @@ export const HomePage = () => {
   const { movieToDelete } = useSelector(selectDeleteMovie);
   const { movieToAdd } = useSelector(selectAddMovie);
 
+  if (criteria && movies.length) {
+    movies = movies.filter((movie) => {
+      return movie.title.toLowerCase().includes(criteria.toLowerCase());
+    });
+  }
+
   movies =
     filterGenre === null || filterGenre === 'All'
       ? movies
       : movies.filter((movie) => {
           return movie.genres.includes(filterGenre);
         });
-
-  console.log('movies filtered', movies);
 
   useEffect(() => {
     dispatch(fetchMovies());

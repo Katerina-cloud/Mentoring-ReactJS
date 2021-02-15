@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormInput, Button } from '../../components/';
 
 export const SearchBar = () => {
+  const history = useHistory();
   const [searchText, setSearchText] = useState('');
 
   const handleChange = (event) => {
@@ -12,9 +14,9 @@ export const SearchBar = () => {
   };
 
   const onSubmit = () => {
-    console.log(searchText);
-    setSearchText('');
+    searchText.length ? history.push(`/search/${searchText}`) : history.push('/');
   };
+
   return (
     <div className="search-bar">
       <h1 className="search-bar__title">Find your movie</h1>
