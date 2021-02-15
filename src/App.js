@@ -1,14 +1,24 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 import { ErrorBoundary } from './components/';
-import { HomePage } from './pages/';
+import { ErrorPage, MovieDetailsPage, HomePage } from './pages/';
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <HomePage />
-      {/* <MovieDetailsPage /> */}
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route path="/film">
+          <MovieDetailsPage />
+        </Route>
+        <Route path="*">
+          <ErrorPage />
+        </Route>
+      </Switch>
     </ErrorBoundary>
   );
 };
