@@ -16,17 +16,20 @@ import {
   deleteMovie,
   clearEditMovie,
 } from '../../store/actions/movies';
-import selectMovies from '../../store/selectors/movies';
-import selectFilterGenre from '../../store/selectors/filterGenre';
-import selecteEditMovie from '../../store/selectors/editMovie';
-import selectDeleteMovie from '../../store/selectors/deleteMovie';
+import {
+  selectMovies,
+  selectFilterGenre,
+  selectEditMovie,
+  selectDeleteMovie,
+} from '../../store/selectors/';
 
 export const MovieDetailsPage = () => {
   const dispatch = useDispatch();
   const [currentMovie, setCurrentMovie] = useState(181808);
+
   let { movies } = useSelector(selectMovies);
   const { filterGenre } = useSelector(selectFilterGenre);
-  const { movieToEdit } = useSelector(selecteEditMovie);
+  const { movieToEdit } = useSelector(selectEditMovie);
   const { movieToDelete } = useSelector(selectDeleteMovie);
 
   movies =
