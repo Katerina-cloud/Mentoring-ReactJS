@@ -23,7 +23,7 @@ import {
 } from '../../components/';
 import selectMovies from '../../store/selectors/movies';
 import selectFilterGenre from '../../store/selectors/filterGenre';
-import selecteEditMovie from '../../store/selectors/editMovie';
+import selectEditMovie from '../../store/selectors/editMovie';
 import selectDeleteMovie from '../../store/selectors/deleteMovie';
 import selectAddMovie from '../../store/selectors/addMovie';
 
@@ -31,11 +31,9 @@ export const HomePage = () => {
   const dispatch = useDispatch();
   let { movies } = useSelector(selectMovies);
   const { filterGenre } = useSelector(selectFilterGenre);
-  const { movieToEdit } = useSelector(selecteEditMovie);
+  const { movieToEdit } = useSelector(selectEditMovie);
   const { movieToDelete } = useSelector(selectDeleteMovie);
   const { movieToAdd } = useSelector(selectAddMovie);
-
-  console.log(movies);
 
   movies =
     filterGenre === null || filterGenre === 'All'
@@ -132,5 +130,3 @@ export const HomePage = () => {
     </>
   );
 };
-// 337167
-// 269149
