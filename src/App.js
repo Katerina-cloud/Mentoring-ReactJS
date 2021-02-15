@@ -9,11 +9,14 @@ const App = () => {
   return (
     <ErrorBoundary>
       <Switch>
-        <Route exact path="/">
+        <Route path="/film/:searchId">
+          <MovieDetailsPage />
+        </Route>
+        <Route path="/search/:criteria">
           <HomePage />
         </Route>
-        <Route path="/film/:id">
-          <MovieDetailsPage />
+        <Route exact path="/">
+          <HomePage />
         </Route>
         <Route path="*">
           <ErrorPage />

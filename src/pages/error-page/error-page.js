@@ -8,7 +8,7 @@ export const ErrorPage = () => {
       <h3>Page not found</h3>
       <h1>404</h1>
       <Link to="/">
-        <Button onClick={() => {}} title="Go back to home" textColor="red" />
+        <Button title="Go back to home" textColor="red" />
       </Link>
     </div>
   );
