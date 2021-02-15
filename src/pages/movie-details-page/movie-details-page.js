@@ -16,17 +16,35 @@ import {
   deleteMovie,
   clearEditMovie,
 } from '../../store/actions/movies';
+import selectMovies from '../../store/selectors/movies';
+import selectFilterGenre from '../../store/selectors/filterGenre';
+import selecteEditMovie from '../../store/selectors/editMovie';
+import selectDeleteMovie from '../../store/selectors/deleteMovie';
 
-export const MovieDetailsPage = ({ movie }) => {
+export const MovieDetailsPage = () => {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.moviesData.movies);
-  const movieToEdit = useSelector((state) => state.moviesData.editMovie);
-  const movieToDelete = useSelector((state) => state.moviesData.deleteMovie);
-  const [currentMovie, setCurrentMovie] = useState(null);
+  const [currentMovie, setCurrentMovie] = useState(181808);
+  let { movies } = useSelector(selectMovies);
+  const { filterGenre } = useSelector(selectFilterGenre);
+  const { movieToEdit } = useSelector(selecteEditMovie);
+  const { movieToDelete } = useSelector(selectDeleteMovie);
+
+  movies =
+    filterGenre === null || filterGenre === 'All'
+      ? movies
+      : movies.filter((movie) => {
+          return movie.genres.includes(filterGenre);
+        });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchMovies());
   }, [dispatch]);
+
+  const setFilmCard = (filmId) => {
+    const current = movies.find(({ id }) => id === filmId);
+    setCurrentMovie(current);
+  };
 
   const shouldOpenEditModal = Boolean(movieToEdit);
   const shouldOpenDeleteModal = Boolean(movieToDelete);
@@ -80,6 +98,9 @@ export const MovieDetailsPage = ({ movie }) => {
                 }}
                 openDeleteMovie={() => {
                   openDeleteMovie(item.id);
+                }}
+                setFilmCard={() => {
+                  setFilmCard(item);
                 }}
               />
             </div>

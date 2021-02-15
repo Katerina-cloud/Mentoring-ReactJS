@@ -3,7 +3,7 @@ import { SearchIcon } from '../../assets/icons/search';
 import { Raiting, Logo } from '../../components/';
 
 export const HeaderMovieDetails = ({ movie }) => {
-  const { title, vote_average, overview, release_date, runtime, imageSource, genres } = movie;
+  const { title, vote_average, overview, release_date, runtime, genres, poster_path } = movie;
   let genresString;
   let yearToRender;
   if (genres) {
@@ -17,7 +17,7 @@ export const HeaderMovieDetails = ({ movie }) => {
         <SearchIcon />
       </div>
       <div className="header-movie-details__main">
-        <img src={imageSource} className="header-movie-details__image" alt={`${title} poster`} />
+        <img src={poster_path} className="header-movie-details__image" alt={`${title} poster`} />
         <div className="header-movie-details__info">
           <div className="header-movie-details__title-wrapper">
             <h1 className="header-movie-details__title">{title}</h1>

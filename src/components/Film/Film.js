@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DottedIconDropdown, Chip } from '../../components/';
 
-export const Film = ({ title, genres, year, imageSource, openDeleteMovie, openEditMovie }) => {
+export const Film = ({
+  title,
+  genres,
+  year,
+  imageSource,
+  openDeleteMovie,
+  openEditMovie,
+  setFilmCard,
+}) => {
   let genresString;
   let yearToRender;
   if (genres) {
@@ -12,7 +20,12 @@ export const Film = ({ title, genres, year, imageSource, openDeleteMovie, openEd
 
   return (
     <div className="film">
-      <img src={imageSource} className="film__image" alt={`${title} poster`} />
+      <img
+        src={imageSource}
+        className="film__image"
+        alt={`${title} poster`}
+        onClick={setFilmCard}
+      />
       <div className="film__dropdown">
         <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />
       </div>

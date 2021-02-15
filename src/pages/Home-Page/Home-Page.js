@@ -41,8 +41,6 @@ export const HomePage = () => {
     filterGenre === null || filterGenre === 'All'
       ? movies
       : movies.filter((movie) => {
-          console.log('movie.genres', movie.genres);
-          console.log('filterGenre', filterGenre);
           return movie.genres.includes(filterGenre);
         });
 
