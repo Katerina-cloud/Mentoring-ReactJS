@@ -2,6 +2,6 @@ import { createSelector } from 'reselect';
 
 const editMovieSelector = (state) => state.moviesData.editMovie;
 
-export default createSelector(editMovieSelector, (movieToEdit) => ({
+export const selectEditMovie = createSelector(editMovieSelector, (movieToEdit) => ({
   movieToEdit,
 }));

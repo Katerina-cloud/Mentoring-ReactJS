@@ -2,6 +2,6 @@ import { createSelector } from 'reselect';
 
 const moviesSelector = (state) => state.moviesData.movies;
 
-export default createSelector(moviesSelector, (movies) => ({
+export const selectMovies = createSelector(moviesSelector, (movies) => ({
   movies,
 }));

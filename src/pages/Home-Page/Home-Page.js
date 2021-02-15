@@ -21,11 +21,13 @@ import {
   EditMovieModal,
   AddMovieModal,
 } from '../../components/';
-import selectMovies from '../../store/selectors/movies';
-import selectFilterGenre from '../../store/selectors/filterGenre';
-import selectEditMovie from '../../store/selectors/editMovie';
-import selectDeleteMovie from '../../store/selectors/deleteMovie';
-import selectAddMovie from '../../store/selectors/addMovie';
+import {
+  selectMovies,
+  selectFilterGenre,
+  selectEditMovie,
+  selectDeleteMovie,
+  selectAddMovie,
+} from '../../store/selectors/';
 
 export const HomePage = () => {
   const dispatch = useDispatch();

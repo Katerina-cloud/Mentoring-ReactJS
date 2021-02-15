@@ -2,6 +2,6 @@ import { createSelector } from 'reselect';
 
 const deleteMovieSelector = (state) => state.moviesData.deleteMovie;
 
-export default createSelector(deleteMovieSelector, (movieToDelete) => ({
+export const selectDeleteMovie = createSelector(deleteMovieSelector, (movieToDelete) => ({
   movieToDelete,
 }));
