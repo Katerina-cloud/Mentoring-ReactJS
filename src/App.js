@@ -2,12 +2,13 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import './App.scss';
 import { ErrorBoundary } from './components/';
-import { HomePage } from './pages/';
+import { ErrorPage } from './pages/';
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <HomePage />
+      {/* <HomePage /> */}
+      <ErrorPage />
       {/* <MovieDetailsPage movieId="2" /> */}
     </ErrorBoundary>
   );
