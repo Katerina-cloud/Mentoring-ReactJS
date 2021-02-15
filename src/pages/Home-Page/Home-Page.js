@@ -21,22 +21,29 @@ import {
   EditMovieModal,
   AddMovieModal,
 } from '../../components/';
+import selectMovies from '../../store/selectors/movies';
+import selectFilterGenre from '../../store/selectors/filterGenre';
+import selecteEditMovie from '../../store/selectors/editMovie';
+import selectDeleteMovie from '../../store/selectors/deleteMovie';
+import selectAddMovie from '../../store/selectors/addMovie';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
-  let movies = useSelector((state) => state.moviesData.movies);
-  const filterByGenre = useSelector((state) => state.moviesData.filterByGenre);
-  const movieToEdit = useSelector((state) => state.moviesData.editMovie);
-  const movieToDelete = useSelector((state) => state.moviesData.deleteMovie);
-  const movieToAdd = useSelector((state) => state.moviesData.addMovie);
+  let { movies } = useSelector(selectMovies);
+  const { filterGenre } = useSelector(selectFilterGenre);
+  const { movieToEdit } = useSelector(selecteEditMovie);
+  const { movieToDelete } = useSelector(selectDeleteMovie);
+  const { movieToAdd } = useSelector(selectAddMovie);
+
+  console.log(movies);
 
   movies =
-    filterByGenre === null || filterByGenre === 'All'
+    filterGenre === null || filterGenre === 'All'
       ? movies
       : movies.filter((movie) => {
           console.log('movie.genres', movie.genres);
-          console.log('filterByGenre', filterByGenre);
-          return movie.genres.includes(filterByGenre);
+          console.log('filterGenre', filterGenre);
+          return movie.genres.includes(filterGenre);
         });
 
   console.log('movies filtered', movies);

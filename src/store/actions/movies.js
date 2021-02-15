@@ -181,7 +181,7 @@ export const addMovie = (movie) => {
   };
 };
 
-export const setFilterByGenre = (genre) => {
+export const setFilterGenre = (genre) => {
   return (dispatch) => {
     dispatch({
       type: SET_FILTER_BY_GENRE,
@@ -190,7 +190,7 @@ export const setFilterByGenre = (genre) => {
   };
 };
 
-export const clearFilterByGenre = () => {
+export const clearFilterGenre = () => {
   return (dispatch) => {
     dispatch({
       type: CLEAR_FILTER_BY_GENRE,

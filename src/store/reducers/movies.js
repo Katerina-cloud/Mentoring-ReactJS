@@ -25,7 +25,7 @@ const initialState = {
   deleteMovie: null,
   addMovie: null,
   error: null,
-  filterByGenre: null,
+  filterGenre: null,
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -114,12 +114,12 @@ export const moviesReducer = (state = initialState, action) => {
     case SET_FILTER_BY_GENRE:
       return {
         ...state,
-        filterByGenre: action.payload,
+        filterGenre: action.payload,
       };
     case CLEAR_FILTER_BY_GENRE:
       return {
         ...state,
-        filterByGenre: null,
+        filterGenre: null,
       };
     default:
       return state;

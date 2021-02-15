@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { FilterButton, Dropdown } from '../../components/';
-import { setFilterByGenre } from '../../store/actions/movies';
+import { setFilterGenre } from '../../store/actions/movies';
 
 const data = [
   {
@@ -24,7 +24,7 @@ export const FilterBar = () => {
   const dispatch = useDispatch();
 
   const onClick = (genre) => {
-    dispatch(setFilterByGenre(genre));
+    dispatch(setFilterGenre(genre));
   };
   return (
     <div className="filter-bar__wrapper">
