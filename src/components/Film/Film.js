@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { DottedIconDropdown, Chip } from '../../components/';
 
 export const Film = ({
@@ -20,12 +21,14 @@ export const Film = ({
 
   return (
     <div className="film">
-      <img
-        src={imageSource}
-        className="film__image"
-        alt={`${title} poster`}
-        onClick={setFilmCard}
-      />
+      <Link to="/film">
+        <img
+          src={imageSource}
+          className="film__image"
+          alt={`${title} poster`}
+          onClick={setFilmCard}
+        />
+      </Link>
       <div className="film__dropdown">
         <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />
       </div>
