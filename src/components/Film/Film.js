@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { DottedIconDropdown, Chip } from '../../components/';
 
-export const Film = ({
-  title,
-  genres,
-  year,
-  imageSource,
-  openDeleteMovie,
-  openEditMovie,
-  setFilmCard,
-}) => {
+export const Film = ({ id, title, genres, year, imageSource, openDeleteMovie, openEditMovie }) => {
   let genresString;
   let yearToRender;
   if (genres) {
@@ -21,13 +13,8 @@ export const Film = ({
 
   return (
     <div className="film">
-      <Link to="/film">
-        <img
-          src={imageSource}
-          className="film__image"
-          alt={`${title} poster`}
-          onClick={setFilmCard}
-        />
+      <Link to={`/film/${id}`}>
+        <img src={imageSource} className="film__image" alt={`${title} poster`} />
       </Link>
       <div className="film__dropdown">
         <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />

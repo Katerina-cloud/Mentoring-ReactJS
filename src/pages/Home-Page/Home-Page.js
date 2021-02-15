@@ -98,6 +98,7 @@ export const HomePage = () => {
           {movies.map((item, index) => (
             <div key={index} className="home-page__film">
               <Film
+                id={item.id}
                 year={item.release_date}
                 title={item.title}
                 genres={item.genres}

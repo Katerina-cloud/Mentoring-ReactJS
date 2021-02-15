@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   HeaderMovieDetails,
   Footer,
@@ -24,13 +25,14 @@ import {
 } from '../../store/selectors/';
 
 export const MovieDetailsPage = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const [currentMovie, setCurrentMovie] = useState(181808);
-
   let { movies } = useSelector(selectMovies);
   const { filterGenre } = useSelector(selectFilterGenre);
   const { movieToEdit } = useSelector(selectEditMovie);
   const { movieToDelete } = useSelector(selectDeleteMovie);
+
+  const [currentMovie, setCurrentMovie] = useState();
 
   movies =
     filterGenre === null || filterGenre === 'All'
@@ -40,14 +42,13 @@ export const MovieDetailsPage = () => {
         });
 
   useEffect(() => {
+    if (!movies.length) {
+      dispatch(fetchMovies());
+    }
+    const curMovie = movies.find((movie) => movie.id === +id);
+    setCurrentMovie(curMovie);
     window.scrollTo(0, 0);
-    dispatch(fetchMovies());
-  }, [dispatch]);
-
-  const setFilmCard = (filmId) => {
-    const current = movies.find(({ id }) => id === filmId);
-    setCurrentMovie(current);
-  };
+  }, [id, movies, dispatch]);
 
   const shouldOpenEditModal = Boolean(movieToEdit);
   const shouldOpenDeleteModal = Boolean(movieToDelete);
@@ -92,6 +93,7 @@ export const MovieDetailsPage = () => {
               }}
             >
               <Film
+                id={item.id}
                 year={item.release_date}
                 title={item.title}
                 genres={item.genres}
@@ -101,9 +103,6 @@ export const MovieDetailsPage = () => {
                 }}
                 openDeleteMovie={() => {
                   openDeleteMovie(item.id);
-                }}
-                setFilmCard={() => {
-                  setFilmCard(item);
                 }}
               />
             </div>
