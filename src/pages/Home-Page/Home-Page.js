@@ -27,12 +27,17 @@ import {
   selectEditMovie,
   selectDeleteMovie,
   selectAddMovie,
+  selectSortParameter,
 } from '../../store/selectors/';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
+
   let { movies } = useSelector(selectMovies);
+
   const { filterGenre } = useSelector(selectFilterGenre);
+  const { sortParameter } = useSelector(selectSortParameter);
+
   const { movieToEdit } = useSelector(selectEditMovie);
   const { movieToDelete } = useSelector(selectDeleteMovie);
   const { movieToAdd } = useSelector(selectAddMovie);
@@ -44,7 +49,15 @@ export const HomePage = () => {
           return movie.genres.includes(filterGenre);
         });
 
-  console.log('movies filtered', movies);
+  movies = movies.sort(function (a, b) {
+    if (a[sortParameter] < b[sortParameter]) {
+      return 1;
+    }
+    if (a[sortParameter] > b[sortParameter]) {
+      return -1;
+    }
+    return 0;
+  });
 
   useEffect(() => {
     dispatch(fetchMovies());

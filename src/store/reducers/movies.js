@@ -17,6 +17,7 @@ import {
   ADD_MOVIE_FAIL,
   SET_FILTER_BY_GENRE,
   CLEAR_FILTER_BY_GENRE,
+  SET_SORT_PARAMETER,
 } from '../action-types/';
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
   addMovie: null,
   error: null,
   filterGenre: null,
+  sortParameter: 'release_date',
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -121,6 +123,12 @@ export const moviesReducer = (state = initialState, action) => {
         ...state,
         filterGenre: null,
       };
+    case SET_SORT_PARAMETER:
+      return {
+        ...state,
+        sortParameter: action.payload,
+      };
+
     default:
       return state;
   }

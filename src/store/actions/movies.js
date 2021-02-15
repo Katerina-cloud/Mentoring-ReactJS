@@ -20,6 +20,7 @@ import {
   EDIT_MOVIE_FAIL,
   SET_FILTER_BY_GENRE,
   CLEAR_FILTER_BY_GENRE,
+  SET_SORT_PARAMETER,
 } from '../action-types/';
 import { FETCH_MOVIES_API_URL } from '../../const/';
 
@@ -194,6 +195,15 @@ export const clearFilterGenre = () => {
   return (dispatch) => {
     dispatch({
       type: CLEAR_FILTER_BY_GENRE,
+    });
+  };
+};
+
+export const setSortParameter = (sortParam) => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_SORT_PARAMETER,
+      payload: sortParam,
     });
   };
 };
