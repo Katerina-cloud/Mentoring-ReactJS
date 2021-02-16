@@ -1,3 +1,41 @@
-.add-movie__input {
+.add-movie {
   margin-bottom: 25px;
+
+  &__text,
+  &__date,
+  &__select {
+    background-color: $color-primary-light;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    color: $color-white;
+  }
+  &__select {
+    padding: 10px;
+    color: rgba($color-white, 0.3);
+    @include headline;
+    text-transform: capitalize;
+  }
+  &__date {
+    padding: 10px;
+    color: rgba($color-white, 0.3);
+  }
+  &__text,
+  &__date,
+  &__select ::placeholder {
+    @include headline;
+  }
+  &__label {
+    color: $color-secondary;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    display: block;
+  }
+  &__error {
+    color: $color-white;
+    margin-top: 10px;
+  }
 }
