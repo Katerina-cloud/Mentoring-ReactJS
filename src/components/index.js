@@ -11,6 +11,8 @@ export { SearchBar } from './search-bar';
 export { Chip } from './chip';
 export { Logo } from './logo';
 export { FormInput } from './form-input';
+export { TextInput } from './text-input';
+export { DateInput } from './date-input';
 export { FormDateInput } from './form-date-input';
 export { EditMovieModal } from './edit-movie-modal';
 export { DeleteMovieModal } from './delete-movie-modal';

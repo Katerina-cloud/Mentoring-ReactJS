@@ -1,0 +1,29 @@
+.text-input {
+  margin-bottom: 25px;
+
+  &__text {
+    background-color: $color-primary-light;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    color: $color-white;
+
+    &::placeholder {
+      @include headline;
+    }
+  }
+
+  &__label {
+    color: $color-secondary;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    display: block;
+  }
+  &__error {
+    color: $color-white;
+    margin-top: 10px;
+  }
+}
