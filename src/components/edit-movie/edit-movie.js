@@ -1,156 +1,99 @@
-import React, { useReducer } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { FormInput, FormDateInput, Button } from '..';
-import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { clearEditMovie, setEditMovie, editMovie } from '../../store/actions/movies';
+import React from 'react';
+import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, TextInput, DateInput, SelectInput } from '../../components';
+import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
+import { setEditMovie, clearEditMovie, editMovie } from '../../store/actions/movies';
 
 export const EditMovie = ({ handleEditSubmit }) => {
   const movieToEdit = useSelector((state) => state.moviesData.editMovie);
   const { id, title, runtime, overview, poster_path, release_date, genres } = movieToEdit;
+  const dispatch = useDispatch();
 
-  const initialState = {
-    id: id,
-    title,
-    poster_path,
-    runtime,
-    overview,
-    release_date,
-    genres,
-  };
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case ACTION_UPDATE:
-        // eslint-disable-next-line no-case-declarations
-        let { field, value } = action.payload;
-        // eslint-disable-next-line no-case-declarations
-        let elementToUpdate = state[field];
-        elementToUpdate = value;
-
-        return {
-          ...state,
-          [field]: elementToUpdate,
-        };
-
-      case ACTION_RESET:
-        return action.payload;
-
-      default:
-        break;
-    }
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const dispatchRedux = useDispatch();
-
-  const handleChange = (e) => {
-    console.log(state);
-    e.preventDefault();
-    dispatch({
-      type: ACTION_UPDATE,
-      payload: {
-        field: e.target.name,
-        value: e.target.value,
-      },
-    });
-  };
-
-  const handleEditReset = () => {
-    dispatch({ type: ACTION_RESET, payload: initialState });
-  };
-
-  const handleEditSubmitForm = () => {
-    const movieEdit = {
-      ...state,
-      runtime: Number(state.runtime),
-    };
-    dispatchRedux(setEditMovie(movieEdit));
-    dispatchRedux(editMovie(movieEdit));
-    dispatchRedux(clearEditMovie());
-    handleEditSubmit();
-  };
   return (
-    <>
-      <div className="edit-movie-container__input">
-        <FormInput
-          id="id-edit"
-          name="id"
-          value={state.id}
-          onChange={handleChange}
-          placeholder="Id"
-          label="Id"
-        />
-      </div>
-      <div className="edit-movie-container__input">
-        <FormInput
-          id="title-edit"
-          name="title"
-          value={state.title}
-          onChange={handleChange}
-          placeholder="Title"
-          label="Title"
-        />
-      </div>
-      <div className="edit-movie-container__input">
-        <FormInput
-          id="poster_path-edit"
-          name="poster_path"
-          value={state.poster_path}
-          onChange={handleChange}
-          placeholder="Movie URL here"
-          label="Movie URL"
-        />
-      </div>
-      <div className="edit-movie-container__input">
-        <FormInput
-          id="overview-edit"
-          name="overview"
-          value={state.overview}
-          onChange={handleChange}
-          placeholder="TitlOverview heree"
-          label="Overview"
-        />
-      </div>
-      <div className="edit-movie-container__input">
-        <FormInput
-          id="runtime-edit"
-          name="runtime"
-          value={state.runtime}
-          onChange={handleChange}
-          placeholder="Run time here"
-          label="Run time"
-        />
-      </div>
-      <div className="edit-movie-container__input">
-        <FormInput
-          id="genres-edit"
-          name="genres"
-          value={state.genres}
-          onChange={handleChange}
-          placeholder="Genres"
-          label="Genres"
-        />
-      </div>
-      <div className="edit-movie-container__input">
-        <FormDateInput
-          name="release_date"
-          value={state.release_date}
-          onChange={handleChange}
-          label="Release date"
-        />
-      </div>
-      <div className="edit-movie-container__footer">
-        <div className="edit-movie-container__button">
-          <Button onClick={handleEditReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
+    <Formik
+      initialValues={{
+        id,
+        title,
+        poster_path,
+        overview,
+        runtime,
+        genres: genres[0],
+        release_date,
+      }}
+      validationSchema={Yup.object({
+        id: Yup.number('Id mast be an integer')
+          .integer('Id must be an integer')
+          .required('Required'),
+        title: Yup.string().required('Required'),
+        poster_path: Yup.string().url('Invalid url address').required('Required'),
+        overview: Yup.string().required('Required'),
+        runtime: Yup.number('Runtime mast be an integer')
+          .min(0, 'Runtime must be an integer bigger then 0')
+          .integer('Runtime must be an integer')
+          .required('Required'),
+        genres: Yup.string().required('Required'),
+        release_date: Yup.string().required('Required'),
+      })}
+      onSubmit={(values) => {
+        const movieEdit = {
+          ...values,
+          genres: values.genres.split(' '),
+          runtime: Number(values.runtime),
+        };
+        dispatch(setEditMovie(movieEdit));
+        dispatch(editMovie(movieEdit));
+        dispatch(clearEditMovie());
+        handleEditSubmit();
+      }}
+    >
+      <Form>
+        <div className="edit-movie__input">
+          <TextInput label="Id" name="id" type="text" placeholder="Id" />
         </div>
-        <div className="edit-movie-container__button">
-          <Button
-            onClick={handleEditSubmitForm}
-            title={SECOND_BUTTON_TITLE}
-            color="red"
-            size="big"
+        <div className="edit-movie__input">
+          <TextInput label="Title" name="title" type="text" placeholder="Title" />
+        </div>
+        <div className="edit-movie__input">
+          <TextInput
+            label="Movie URL"
+            name="poster_path"
+            type="text"
+            placeholder="Movie URL here"
           />
         </div>
-      </div>
-    </>
+        <div className="edit-movie__input">
+          <SelectInput label="Genre" name="genres">
+            <option value="comedy">comedy</option>
+            <option value="crime">crime</option>
+            <option value="documentary">documentary</option>
+            <option value="horror">horror</option>
+          </SelectInput>
+        </div>
+        <div className="edit-movie__input">
+          <TextInput label="Overview" name="overview" type="text" placeholder="Overview" />
+        </div>
+        <div className="edit-movie__input">
+          <TextInput label="Runtime" name="runtime" type="text" placeholder="Runtime" />
+        </div>
+        <div className="edit-movie__input">
+          <DateInput
+            label="Release date"
+            name="release_date"
+            type="date"
+            placeholder="Release date"
+          />
+        </div>
+        <div className="edit-movie__footer">
+          <div className="edit-movie__button">
+            <Button type="reset" title={FIRST_BUTTON_TITLE} color="gray" size="big" />
+          </div>
+          <div className="edit-movie__button">
+            <Button type="submit" title={SECOND_BUTTON_TITLE} color="red" size="big" />
+          </div>
+        </div>
+      </Form>
+    </Formik>
   );
 };

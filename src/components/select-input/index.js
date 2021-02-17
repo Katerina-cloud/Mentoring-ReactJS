@@ -1,1 +1,1 @@
-export { SelectInput } from './ select-inputt';
+export { SelectInput } from './select-input';

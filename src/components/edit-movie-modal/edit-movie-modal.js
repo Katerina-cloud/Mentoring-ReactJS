@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, EditMovie } from '..';
+import { Modal, EditMovie } from '../../components';
 
 export const EditMovieModal = ({ isOpen, handleEditCancel, handleEditSubmit }) => {
   return (
