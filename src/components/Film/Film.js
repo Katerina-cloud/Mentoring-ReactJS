@@ -2,19 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { DottedIconDropdown, Chip } from '../../components/';
+import { formatGenre, formatYear, buildMovieDetailsLink } from './helpers';
 
-export const Film = ({ id, title, genres, year, imageSource, openDeleteMovie, openEditMovie }) => {
-  let genresString;
-  let yearToRender;
-  if (genres) {
-    genresString = genres.join(', ');
-    yearToRender = year.split('-')[0];
-  }
+const noop = () => {};
+
+export const Film = ({
+  id,
+  title,
+  genres,
+  year,
+  imageSource,
+  openDeleteMovie = noop,
+  openEditMovie = noop,
+}) => {
+  const genresString = formatGenre(genres);
+  const yearToRender = formatYear(year);
+  const movieDetailsLink = buildMovieDetailsLink(id);
+  const imgAlt = `${title} poster`;
 
   return (
     <div className="film">
-      <Link to={`/film/${id}`}>
-        <img src={imageSource} className="film__image" alt={`${title} poster`} />
+      <Link to={movieDetailsLink}>
+        <img src={imageSource} className="film__image" alt={imgAlt} />
       </Link>
       <div className="film__dropdown">
         <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />

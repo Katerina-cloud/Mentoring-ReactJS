@@ -27,10 +27,10 @@ import {
 export const MovieDetailsPage = () => {
   const { searchId } = useParams();
   const dispatch = useDispatch();
-  let { movies } = useSelector(selectMovies);
-  const { filterGenre } = useSelector(selectFilterGenre);
-  const { movieToEdit } = useSelector(selectEditMovie);
-  const { movieToDelete } = useSelector(selectDeleteMovie);
+  let movies = useSelector(selectMovies);
+  const filterGenre = useSelector(selectFilterGenre);
+  const movieToEdit = useSelector(selectEditMovie);
+  const movieToDelete = useSelector(selectDeleteMovie);
 
   const [currentMovie, setCurrentMovie] = useState();
 

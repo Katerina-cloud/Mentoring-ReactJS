@@ -1,18 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {
-  fetchMovies,
-  setEditMovie,
-  setDeleteMovie,
-  clearDeleteMovie,
-  deleteMovie,
-  clearEditMovie,
-  // editMovie,
-  setAddMovie,
-  clearAddMovie,
-  // addMovie,
-} from '../../store/actions/movies';
 import {
   Header,
   Footer,
@@ -22,101 +10,82 @@ import {
   EditMovieModal,
   AddMovieModal,
 } from '../../components/';
-import {
-  selectMovies,
-  selectFilterGenre,
-  selectEditMovie,
-  selectDeleteMovie,
-  selectAddMovie,
-  selectSortParameter,
-} from '../../store/selectors/';
+import { filterMovies, sortMovies } from '../../services/movie';
 
-export const HomePage = () => {
-  const { criteria } = useParams();
-  const dispatch = useDispatch();
-
-  let { movies } = useSelector(selectMovies);
-
-  const { filterGenre } = useSelector(selectFilterGenre);
-  const { sortParameter } = useSelector(selectSortParameter);
-
-  const { movieToEdit } = useSelector(selectEditMovie);
-  const { movieToDelete } = useSelector(selectDeleteMovie);
-  const { movieToAdd } = useSelector(selectAddMovie);
-
-  if (criteria && movies.length) {
-    movies = movies.filter((movie) => {
-      return movie.title.toLowerCase().includes(criteria.toLowerCase());
-    });
-  }
-
-  movies =
-    filterGenre === null || filterGenre === 'All'
-      ? movies
-      : movies.filter((movie) => {
-          return movie.genres.includes(filterGenre);
-        });
-
-  movies = movies.sort(function (a, b) {
-    if (a[sortParameter] < b[sortParameter]) {
-      return 1;
-    }
-    if (a[sortParameter] > b[sortParameter]) {
-      return -1;
-    }
-    return 0;
-  });
+export const HomePage = ({
+  loadMovies,
+  openAddMovie,
+  openEditMovie,
+  openDeleteMovie,
+  cancelAddMovie,
+  cancelEditMovie,
+  cancelDeleteMovie,
+  // submitAddMovie,
+  // submitEditMovie,
+  submitDeleteMovie,
+  movies,
+  filterGenre,
+  editMovie,
+  deleteMovie,
+  addMovie,
+  sortParameter,
+}) => {
+  const { criteria: searchTitle } = useParams();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
+    loadMovies();
+    // dispatch(fetchMovies());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const filterConfig = { searchTitle, filterGenre };
+  const filteredMovies = filterMovies(movies, filterConfig);
+  const sortedMovies = sortMovies(filteredMovies, sortParameter);
 
-  const shouldOpenEditModal = Boolean(movieToEdit);
-  const shouldOpenDeleteModal = Boolean(movieToDelete);
-  const shouldOpenAddModal = Boolean(movieToAdd);
+  const shouldOpenEditModal = Boolean(editMovie);
+  const shouldOpenDeleteModal = Boolean(deleteMovie);
+  const shouldOpenAddModal = Boolean(addMovie);
 
-  const openEditMovie = (filmId) => {
-    const movie = movies.find(({ id }) => id === filmId);
-    dispatch(setEditMovie(movie));
+  const openEditMovieHandler = (filmId) => {
+    openEditMovie(filmId, movies);
   };
 
-  const openDeleteMovie = (filmId) => {
-    const movie = movies.find(({ id }) => id === filmId);
-    dispatch(setDeleteMovie(movie));
+  const openDeleteMovieHandler = (filmId) => {
+    openDeleteMovie(filmId, movies);
   };
 
-  const handleDeleteCancel = () => dispatch(clearDeleteMovie());
-  const handleDeleteSubmit = () => {
-    dispatch(deleteMovie(movieToDelete.id));
-    dispatch(clearDeleteMovie());
+  const deleteCancelHandler = () => cancelDeleteMovie();
+
+  const deleteSubmitHandler = () => {
+    submitDeleteMovie(deleteMovie);
   };
 
-  const handleEditCancel = () => dispatch(clearEditMovie());
+  const editCancelHandler = () => cancelEditMovie();
 
-  const handleEditSubmit = () => {
+  const editSubmitHandler = () => {
     // dispatch(editMovie(movieToEdit));
   };
 
-  const openAddMovie = () => {
-    dispatch(setAddMovie(true));
+  const openAddMovieHandler = () => {
+    openAddMovie();
   };
-  const handleAddCancel = () => {
-    dispatch(clearAddMovie(null));
+  const addCancelHandler = () => {
+    cancelAddMovie();
   };
-  const handleAddSubmit = () => {
+  const addSubmitHandler = () => {
     // dispatch(addMovie(movieToAdd));
     // dispatch(clearAddMovie(null));
   };
 
   return (
     <>
-      <Header openAddMovie={openAddMovie} />
+      <Header openAddMovie={openAddMovieHandler} />
       <main className="home-page__main">
         <div className="home-page__filter">
           <FilterBar />
         </div>
         <div className="home-page__films">
-          {movies.map((item, index) => (
+          {sortedMovies.map((item, index) => (
             <div key={index} className="home-page__film">
               <Film
                 id={item.id}
@@ -125,10 +94,10 @@ export const HomePage = () => {
                 genres={item.genres}
                 imageSource={item.poster_path}
                 openEditMovie={() => {
-                  openEditMovie(item.id);
+                  openEditMovieHandler(item.id);
                 }}
                 openDeleteMovie={() => {
-                  openDeleteMovie(item.id);
+                  openDeleteMovieHandler(item.id);
                 }}
               />
             </div>
@@ -136,18 +105,18 @@ export const HomePage = () => {
         </div>
         <EditMovieModal
           isOpen={shouldOpenEditModal}
-          handleEditCancel={handleEditCancel}
-          handleEditSubmit={handleEditSubmit}
+          handleEditCancel={editCancelHandler}
+          handleEditSubmit={editSubmitHandler}
         />
         <DeleteMovieModal
           isOpen={shouldOpenDeleteModal}
-          handleDeleteCancel={handleDeleteCancel}
-          handleDeleteSubmit={handleDeleteSubmit}
+          handleDeleteCancel={deleteCancelHandler}
+          handleDeleteSubmit={deleteSubmitHandler}
         />
         <AddMovieModal
           isOpen={shouldOpenAddModal}
-          handleAddCancel={handleAddCancel}
-          handleAddSubmit={handleAddSubmit}
+          handleAddCancel={addCancelHandler}
+          handleAddSubmit={addSubmitHandler}
         />
       </main>
       <Footer />

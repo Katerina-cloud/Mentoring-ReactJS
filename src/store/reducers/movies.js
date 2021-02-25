@@ -20,13 +20,15 @@ import {
   SET_SORT_PARAMETER,
 } from '../action-types/';
 
+import { SORTINGS } from '../../const/sortings';
+
 const initialState = {
   movies: [],
   editMovie: null,
   deleteMovie: null,
   addMovie: null,
   error: null,
-  filterGenre: null,
+  filterGenre: SORTINGS.ALL,
   sortParameter: 'release_date',
 };
 

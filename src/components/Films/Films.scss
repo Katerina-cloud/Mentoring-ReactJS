@@ -1,0 +1,33 @@
+.film {
+  width: 400px;
+  height: 630px;
+  position: relative;
+
+  &__image {
+    width: 400px;
+    height: 550px;
+    min-height: 550px;
+    margin-bottom: 25px;
+  }
+  &__text {
+    text-transform: capitalize;
+    color: $color-white;
+    opacity: 0.5;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    @include headline;
+    margin-bottom: 10px;
+  }
+  &__category {
+    @include paragraph;
+  }
+  &__dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
