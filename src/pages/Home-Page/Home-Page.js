@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
   Header,
@@ -20,22 +19,20 @@ export const HomePage = ({
   cancelAddMovie,
   cancelEditMovie,
   cancelDeleteMovie,
-  // submitAddMovie,
-  // submitEditMovie,
+  submitAddMovie,
+  submitEditMovie,
   submitDeleteMovie,
   movies,
-  filterGenre,
   editMovie,
-  deleteMovie,
   addMovie,
+  filterGenre,
+  deleteMovie,
   sortParameter,
 }) => {
   const { criteria: searchTitle } = useParams();
-  // const dispatch = useDispatch();
 
   useEffect(() => {
     loadMovies();
-    // dispatch(fetchMovies());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const filterConfig = { searchTitle, filterGenre };
@@ -62,8 +59,8 @@ export const HomePage = ({
 
   const editCancelHandler = () => cancelEditMovie();
 
-  const editSubmitHandler = () => {
-    // dispatch(editMovie(movieToEdit));
+  const editSubmitHandler = (movieEdit) => {
+    submitEditMovie(movieEdit);
   };
 
   const openAddMovieHandler = () => {
@@ -72,9 +69,8 @@ export const HomePage = ({
   const addCancelHandler = () => {
     cancelAddMovie();
   };
-  const addSubmitHandler = () => {
-    // dispatch(addMovie(movieToAdd));
-    // dispatch(clearAddMovie(null));
+  const addSubmitHandler = (movieToAdd) => {
+    submitAddMovie(movieToAdd);
   };
 
   return (

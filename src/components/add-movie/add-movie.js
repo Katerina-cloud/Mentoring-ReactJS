@@ -1,14 +1,10 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
 import { Button, TextInput, DateInput, SelectInput } from '../../components';
 import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { setAddMovie, clearAddMovie, addMovie } from '../../store/actions/movies';
 
 export const AddMovie = ({ handleAddSubmit }) => {
-  const dispatch = useDispatch();
-
   return (
     <Formik
       initialValues={{
@@ -36,10 +32,7 @@ export const AddMovie = ({ handleAddSubmit }) => {
           genres: values.genres.split(' '),
           runtime: Number(values.runtime),
         };
-        dispatch(setAddMovie(movieToAdd));
-        dispatch(addMovie(movieToAdd));
-        dispatch(clearAddMovie(null));
-        handleAddSubmit();
+        handleAddSubmit(movieToAdd);
       }}
     >
       <Form>

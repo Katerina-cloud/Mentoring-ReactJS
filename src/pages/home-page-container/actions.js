@@ -5,10 +5,10 @@ import {
   clearDeleteMovie,
   deleteMovie,
   clearEditMovie,
-  // editMovie,
   setAddMovie,
   clearAddMovie,
-  // addMovie,
+  editMovie,
+  addMovie,
 } from '../../store/actions/movies';
 
 export const loadMovies = () => (dispatch) => {
@@ -34,8 +34,10 @@ export const submitDeleteMovie = (movieToDelete) => (dispatch) => {
 
 export const cancelEditMovie = () => (dispatch) => dispatch(clearEditMovie());
 
-export const submitEditMovie = () => (dispatch) => {
-  // dispatch(editMovie(movieToEdit));
+export const submitEditMovie = (movieEdit) => (dispatch) => {
+  dispatch(setEditMovie(movieEdit));
+  dispatch(editMovie(movieEdit));
+  dispatch(clearEditMovie());
 };
 
 export const openAddMovie = () => (dispatch) => {
@@ -44,7 +46,8 @@ export const openAddMovie = () => (dispatch) => {
 export const cancelAddMovie = () => (dispatch) => {
   dispatch(clearAddMovie(null));
 };
-export const submitAddMovie = () => (dispatch) => {
-  // dispatch(addMovie(movieToAdd));
-  // dispatch(clearAddMovie(null));
+export const submitAddMovie = (movieToAdd) => (dispatch) => {
+  dispatch(setAddMovie(movieToAdd));
+  dispatch(addMovie(movieToAdd));
+  dispatch(clearAddMovie(null));
 };

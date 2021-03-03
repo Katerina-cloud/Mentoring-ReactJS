@@ -1,15 +1,13 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Button, TextInput, DateInput, SelectInput } from '../../components';
 import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { setEditMovie, clearEditMovie, editMovie } from '../../store/actions/movies';
 
 export const EditMovie = ({ handleEditSubmit }) => {
   const movieToEdit = useSelector((state) => state.moviesData.editMovie);
   const { id, title, runtime, overview, poster_path, release_date, genres } = movieToEdit;
-  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -42,10 +40,7 @@ export const EditMovie = ({ handleEditSubmit }) => {
           genres: values.genres.split(' '),
           runtime: Number(values.runtime),
         };
-        dispatch(setEditMovie(movieEdit));
-        dispatch(editMovie(movieEdit));
-        dispatch(clearEditMovie());
-        handleEditSubmit();
+        handleEditSubmit(movieEdit);
       }}
     >
       <Form>
