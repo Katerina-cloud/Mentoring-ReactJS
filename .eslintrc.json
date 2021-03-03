@@ -1,11 +1,20 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "testing-library"],
   "extends": [
     "@react-native-community",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:testing-library/recommended",
+    "plugin:jest-dom/recommended"
   ],
   "rules": {
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debug": "warn",
+    "jest-dom/prefer-checked": "error",
+    "jest-dom/prefer-enabled-disabled": "error",
+    "jest-dom/prefer-required": "error",
+    "jest-dom/prefer-to-have-attribute": "error"
   }
 }

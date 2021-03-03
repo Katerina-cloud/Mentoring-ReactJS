@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add-movie-modal snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div />
+    <div>
+      <div
+        class="modal__overlay"
+      >
+        <div
+          class="modal__window"
+        >
+          <div
+            class="modal__header"
+          >
+            <button
+              class="modal__icon"
+            >
+              X
+            </button>
+            <h1
+              class="modal__title"
+            >
+              Add movie
+            </h1>
+          </div>
+          <div
+            class="modal__body"
+          >
+            <form
+              action="#"
+            >
+              <div
+                class="add-movie__input"
+              >
+                <label
+                  class="text-input__label"
+                  for="title"
+                >
+                  Title
+                </label>
+                <input
+                  class="text-input__text"
+                  id="title"
+                  name="title"
+                  placeholder="Title"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="add-movie__input"
+              >
+                <label
+                  class="text-input__label"
+                  for="poster_path"
+                >
+                  Movie URL
+                </label>
+                <input
+                  class="text-input__text"
+                  id="poster_path"
+                  name="poster_path"
+                  placeholder="Movie URL here"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="add-movie__input"
+              >
+                <label
+                  class="select-input__label"
+                  for="genres"
+                >
+                  Genre
+                </label>
+                <select
+                  class="select-input__select"
+                  id="genres"
+                  name="genres"
+                >
+                  <option
+                    value="comedy"
+                  >
+                    comedy
+                  </option>
+                  <option
+                    value="crime"
+                  >
+                    crime
+                  </option>
+                  <option
+                    value="documentary"
+                  >
+                    documentary
+                  </option>
+                  <option
+                    value="horror"
+                  >
+                    horror
+                  </option>
+                </select>
+              </div>
+              <div
+                class="add-movie__input"
+              >
+                <label
+                  class="text-input__label"
+                  for="overview"
+                >
+                  Overview
+                </label>
+                <input
+                  class="text-input__text"
+                  id="overview"
+                  name="overview"
+                  placeholder="Overview"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="add-movie__input"
+              >
+                <label
+                  class="text-input__label"
+                  for="runtime"
+                >
+                  Runtime
+                </label>
+                <input
+                  class="text-input__text"
+                  id="runtime"
+                  name="runtime"
+                  placeholder="Runtime"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="add-movie__input"
+              >
+                <label
+                  class="date-input__label"
+                  for="release_date"
+                >
+                  Release date
+                </label>
+                <input
+                  class="date-input__date"
+                  id="release_date"
+                  name="release_date"
+                  placeholder="Release date"
+                  type="date"
+                  value=""
+                />
+              </div>
+              <div
+                class="add-movie__footer"
+              >
+                <div
+                  class="add-movie__button"
+                >
+                  <button
+                    class="button button--text-undefined button--gray button--border-undefined"
+                    type="reset"
+                  >
+                    Reset
+                  </button>
+                </div>
+                <div
+                  class="add-movie__button"
+                >
+                  <button
+                    class="button button--text-undefined button--red button--border-undefined"
+                    type="submit"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

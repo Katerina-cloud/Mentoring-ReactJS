@@ -7,7 +7,7 @@ export const AddMovieModal = ({ isOpen, handleAddSubmit, handleAddCancel }) => {
   return (
     <>
       {isOpen && (
-        <Modal onCancel={handleAddCancel} title="Add MOVIE">
+        <Modal onCancel={handleAddCancel} title="Add movie">
           <AddMovie handleAddSubmit={handleAddSubmit} />
         </Modal>
       )}

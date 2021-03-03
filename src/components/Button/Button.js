@@ -14,8 +14,10 @@ export const Button = ({ type, onClick, title, color, textColor, borderColor }) 
 };
 
 Button.propTypes = {
+  type: PropTypes.string,
   onClick: PropTypes.func,
   title: PropTypes.string,
   color: PropTypes.string,
   textColor: PropTypes.string,
+  borderColor: PropTypes.string,
 };

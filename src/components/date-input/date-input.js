@@ -9,8 +9,12 @@ export const DateInput = ({ label, ...props }) => {
       <label htmlFor={props.id || props.name} className="date-input__label">
         {label}
       </label>
-      <input className="date-input__date" {...field} {...props} />
-      {meta.touched && meta.error ? <div className="date-input__error">{meta.error}</div> : null}
+      <input id={props.id || props.name} className="date-input__date" {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div role="error-message" className="date-input__error">
+          {meta.error}
+        </div>
+      ) : null}
     </>
   );
 };

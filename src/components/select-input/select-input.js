@@ -9,7 +9,7 @@ export const SelectInput = ({ label, ...props }) => {
       <label htmlFor={props.id || props.name} className="select-input__label">
         {label}
       </label>
-      <select {...field} {...props} className="select-input__select" />
+      <select id={props.id || props.name} {...field} {...props} className="select-input__select" />
       {meta.touched && meta.error ? <div className="select-input__error">{meta.error}</div> : null}
     </>
   );
