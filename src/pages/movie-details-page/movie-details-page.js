@@ -91,7 +91,6 @@ export const MovieDetailsPage = () => {
               key={index}
               className="home-page__film"
               onClick={() => {
-                console.log('setCurrentMovie');
                 setCurrentMovie(item);
               }}
             >

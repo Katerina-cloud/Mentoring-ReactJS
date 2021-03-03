@@ -17,7 +17,6 @@ export const filterMovies = (movies, { searchTitle, filterGenre }) => {
     let isIncludingSubstring = true;
 
     if (!isDefaultFiltering(filterGenre)) {
-      console.log('isIncludingGenre', isIncludingGenre);
       isIncludingGenre = genres.includes(filterGenre);
     }
 

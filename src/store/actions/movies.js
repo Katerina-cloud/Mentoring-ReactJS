@@ -207,6 +207,8 @@ export const setSortParameter = (sortParam) => {
     });
   };
 };
+
+//fetch using axios
 // export const fetchMovies = () => {
 //   return async (dispatch) => {
 //     try {

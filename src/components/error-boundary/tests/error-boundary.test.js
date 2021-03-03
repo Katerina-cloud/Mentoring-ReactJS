@@ -14,7 +14,6 @@ test('renders that there was a problem', () => {
   const { rerender } = render(<Bomb />, { wrapper: ErrorBoundary });
   rerender(<Bomb shouldThrow={true} />);
 
-  console.log(typeof screen.getByRole('alert-error').textContent);
   expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot('"Something went wrong."');
   expect(screen.getByRole('alert-error').textContent.toString()).toMatch(/Error: 💣/i);
 });
