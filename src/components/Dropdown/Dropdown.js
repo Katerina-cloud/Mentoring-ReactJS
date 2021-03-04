@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSortParameter } from '../../store/actions/movies';
+import { SORTINGS } from '../../const/sortings';
 
 export const Dropdown = () => {
   const dispatch = useDispatch();
-  const [selected, setSelected] = useState({ value: 'release_date' });
+  const [selected, setSelected] = useState({ value: SORTINGS.RELEASE_DATE });
 
   const handleChange = (e) => {
     setSelected({ value: e.target.value });
@@ -17,10 +18,10 @@ export const Dropdown = () => {
         Sort by
       </label>
       <select value={selected.value} onChange={handleChange} className="dropdown__select">
-        <option className="dropdown__option" value="release_date">
+        <option className="dropdown__option" value={SORTINGS.RELEASE_DATE}>
           release date
         </option>
-        <option className="dropdown__option" value="vote_average">
+        <option className="dropdown__option" value={SORTINGS.VOTE_AVERAGE}>
           rating
         </option>
       </select>

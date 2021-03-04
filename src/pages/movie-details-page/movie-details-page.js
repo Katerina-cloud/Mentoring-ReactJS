@@ -19,19 +19,19 @@ import {
   editMovie,
 } from '../../store/actions/movies';
 import {
-  selectMovies,
-  selectFilterGenre,
-  selectEditMovie,
-  selectDeleteMovie,
+  moviesSelector,
+  filterGenreSelector,
+  editMovieSelector,
+  deleteMovieSelector,
 } from '../../store/selectors/';
 
 export const MovieDetailsPage = () => {
   const { searchId } = useParams();
   const dispatch = useDispatch();
-  let movies = useSelector(selectMovies);
-  const filterGenre = useSelector(selectFilterGenre);
-  const movieToEdit = useSelector(selectEditMovie);
-  const movieToDelete = useSelector(selectDeleteMovie);
+  let movies = useSelector(moviesSelector);
+  const filterGenre = useSelector(filterGenreSelector);
+  const movieToEdit = useSelector(editMovieSelector);
+  const movieToDelete = useSelector(deleteMovieSelector);
 
   const [currentMovie, setCurrentMovie] = useState();
 

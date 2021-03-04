@@ -1,5 +1,6 @@
 import {
   MOVIES_SUCCESS,
+  MOVIES_FAIL,
   SET_EDIT_MOVIE,
   CLEAR_EDIT_MOVIE,
   SET_DELETE_MOVIE,
@@ -40,6 +41,11 @@ export const moviesReducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.payload.data,
+      };
+    case MOVIES_FAIL:
+      return {
+        ...state,
+        error: action.payload,
       };
     case SET_EDIT_MOVIE:
       return {

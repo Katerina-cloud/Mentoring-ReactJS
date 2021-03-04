@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import {
-  selectMovies,
-  selectFilterGenre,
-  selectEditMovie,
-  selectDeleteMovie,
-  selectAddMovie,
-  selectSortParameter,
+  moviesSelector,
+  filterGenreSelector,
+  editMovieSelector,
+  deleteMovieSelector,
+  addMovieSelector,
+  sortParameterSelector,
 } from '../../store/selectors/';
 import {
   loadMovies,
@@ -22,12 +22,12 @@ import {
 } from './actions.js';
 
 const mapStateToProps = (state) => ({
-  movies: selectMovies(state),
-  filterGenre: selectFilterGenre(state),
-  editMovie: selectEditMovie(state),
-  deleteMovie: selectDeleteMovie(state),
-  addMovie: selectAddMovie(state),
-  sortParameter: selectSortParameter(state),
+  movies: moviesSelector(state),
+  filterGenre: filterGenreSelector(state),
+  editMovie: editMovieSelector(state),
+  deleteMovie: deleteMovieSelector(state),
+  addMovie: addMovieSelector(state),
+  sortParameter: sortParameterSelector(state),
 });
 
 const mapDispatchToProps = {

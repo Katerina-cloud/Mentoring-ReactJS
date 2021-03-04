@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
 
-const moviesSelector = (state) => state.moviesData.movies;
+const moviesData = (state) => state.moviesData.movies;
 
-export const selectMovies = createSelector(moviesSelector, (movies) => movies);
+export const moviesSelector = createSelector(moviesData, (movies) => movies);

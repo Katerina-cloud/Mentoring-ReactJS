@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const sortParameterSelector = (state) => state.moviesData.sortParameter;
+const sortParameterData = (state) => state.moviesData.sortParameter;
 
-export const selectSortParameter = createSelector(
-  sortParameterSelector,
+export const sortParameterSelector = createSelector(
+  sortParameterData,
   (sortParameter) => sortParameter,
 );

@@ -35,6 +35,7 @@ export const HomePage = ({
     loadMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const filterConfig = { searchTitle, filterGenre };
   const filteredMovies = filterMovies(movies, filterConfig);
   const sortedMovies = sortMovies(filteredMovies, sortParameter);

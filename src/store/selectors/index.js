@@ -1,6 +1,6 @@
-export { selectMovies } from './movies';
-export { selectFilterGenre } from './filterGenre';
-export { selectEditMovie } from './editMovie';
-export { selectDeleteMovie } from './deleteMovie';
-export { selectAddMovie } from './addMovie';
-export { selectSortParameter } from './sortParameter';
+export { moviesSelector } from './movies';
+export { filterGenreSelector } from './filterGenre';
+export { editMovieSelector } from './editMovie';
+export { deleteMovieSelector } from './deleteMovie';
+export { addMovieSelector } from './addMovie';
+export { sortParameterSelector } from './sortParameter';

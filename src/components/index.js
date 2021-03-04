@@ -14,7 +14,6 @@ export { FormInput } from './form-input';
 export { TextInput } from './text-input';
 export { DateInput } from './date-input';
 export { SelectInput } from './select-input';
-export { FormDateInput } from './form-date-input';
 export { EditMovieModal } from './edit-movie-modal';
 export { DeleteMovieModal } from './delete-movie-modal';
 export { AddMovieModal } from './add-movie-modal';
