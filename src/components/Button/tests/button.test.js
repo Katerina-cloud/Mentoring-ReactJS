@@ -8,7 +8,7 @@ describe('Button', () => {
     const tree = render(<Button title="Test" color="red" textColor="gray" borderColor="red" />);
     expect(tree).toMatchSnapshot();
   });
-  it('handles onClick', () => {
+  it('is expected to call onClick function', () => {
     const onClickMock = jest.fn();
     const { getByText } = render(<Button onClick={onClickMock} title="Test Button" />);
     userEvent.click(getByText('Test Button'));

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from '../../components';
 import { SECOND_BUTTON_TITLE } from './consts';
 
@@ -24,4 +25,10 @@ export const DeleteMovieModal = ({ isOpen, handleDeleteCancel, handleDeleteSubmi
       )}
     </>
   );
+};
+
+DeleteMovieModal.propTypes = {
+  isOpen: PropTypes.bool,
+  handleDeleteCancel: PropTypes.func,
+  handleDeleteSubmit: PropTypes.func,
 };

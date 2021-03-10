@@ -23,4 +23,5 @@ DateInput.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
+  id: PropTypes.string,
 };

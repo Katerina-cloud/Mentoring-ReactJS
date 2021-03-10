@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { DateInput } from '../';
 
 describe('DateInput', () => {
-  test('renders a date input with a label "Release date"', () => {
+  it('renders a date input with a label "Release date"', () => {
     render(
       <Formik>
         <Form>

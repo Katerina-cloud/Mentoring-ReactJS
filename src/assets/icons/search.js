@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function SearchIcon(props) {
+export function SearchIcon() {
   return (
     <svg viewBox="0 0 24 24" width={36} height={36} fill="#f65261">
       <path d="M0 0h24v24H0z" fill="none" />

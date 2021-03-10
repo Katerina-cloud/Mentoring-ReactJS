@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SearchIcon } from '../../assets/icons/search';
 import { Raiting, Logo } from '../../components/';
 
-export const HeaderMovieDetails = ({ movie }) => {
-  const { title, vote_average, overview, release_date, runtime, genres, poster_path } = movie;
+export const HeaderMovieDetails = ({
+  movie: { title, vote_average, overview, release_date, runtime, genres, poster_path },
+}) => {
   let genresString;
   let yearToRender;
   if (genres) {
@@ -33,4 +35,16 @@ export const HeaderMovieDetails = ({ movie }) => {
       </div>
     </header>
   );
+};
+
+HeaderMovieDetails.propTypes = {
+  movie: {
+    title: PropTypes.string,
+    vote_average: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    runtime: PropTypes.number,
+    genres: PropTypes.array,
+    poster_path: PropTypes.string,
+  },
 };

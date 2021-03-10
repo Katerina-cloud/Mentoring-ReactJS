@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextInput, DateInput, SelectInput } from '../../components';
@@ -80,4 +81,8 @@ export const AddMovie = ({ handleAddSubmit }) => {
       </Form>
     </Formik>
   );
+};
+
+AddMovie.propTypes = {
+  handleAddSubmit: PropTypes.func,
 };

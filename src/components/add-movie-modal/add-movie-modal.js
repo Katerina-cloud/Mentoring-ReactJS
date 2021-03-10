@@ -1,5 +1,5 @@
-// import React, { useReducer, useCallback } from 'react';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal } from '../../components';
 import { AddMovie } from '../add-movie/add-movie';
 
@@ -13,4 +13,10 @@ export const AddMovieModal = ({ isOpen, handleAddSubmit, handleAddCancel }) => {
       )}
     </>
   );
+};
+
+AddMovieModal.propTypes = {
+  isOpen: PropTypes.bool,
+  handleAddSubmit: PropTypes.func,
+  handleAddCancel: PropTypes.func,
 };

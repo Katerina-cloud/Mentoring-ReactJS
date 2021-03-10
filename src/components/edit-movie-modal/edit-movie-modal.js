@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, EditMovie } from '../../components';
 
 export const EditMovieModal = ({ isOpen, handleEditCancel, handleEditSubmit }) => {
@@ -11,4 +12,10 @@ export const EditMovieModal = ({ isOpen, handleEditCancel, handleEditSubmit }) =
       )}
     </>
   );
+};
+
+EditMovieModal.propTypes = {
+  isOpen: PropTypes.bool,
+  handleEditCancel: PropTypes.func,
+  handleEditSubmit: PropTypes.func,
 };

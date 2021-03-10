@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { DottedIcon } from '../../assets/icons/dotted-icon';
 
 export const DottedIconDropdown = ({ openEditModal, openDeleteModal }) => {
@@ -37,4 +38,9 @@ export const DottedIconDropdown = ({ openEditModal, openDeleteModal }) => {
       )}
     </div>
   );
+};
+
+DottedIconDropdown.propTypes = {
+  openDeleteModal: PropTypes.func,
+  openEditModal: PropTypes.func,
 };

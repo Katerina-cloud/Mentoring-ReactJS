@@ -18,8 +18,10 @@ export const FormInput = ({ id, label, placeholder, onChange, name, value }) => 
 };
 
 FormInput.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   name: PropTypes.string,
+  value: PropTypes.string,
 };

@@ -40,8 +40,11 @@ export const Film = ({
 };
 
 Film.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   genres: PropTypes.array,
   year: PropTypes.string,
   imageSource: PropTypes.string,
+  openDeleteMovie: PropTypes.func,
+  openEditMovie: PropTypes.func,
 };

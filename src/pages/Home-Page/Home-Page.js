@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import {
   Header,
@@ -33,7 +34,6 @@ export const HomePage = ({
 
   useEffect(() => {
     loadMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filterConfig = { searchTitle, filterGenre };
@@ -119,4 +119,23 @@ export const HomePage = ({
       <Footer />
     </>
   );
+};
+
+HomePage.propTypes = {
+  loadMovies: PropTypes.func,
+  openAddMovie: PropTypes.func,
+  openEditMovie: PropTypes.func,
+  openDeleteMovie: PropTypes.func,
+  cancelAddMovie: PropTypes.func,
+  cancelEditMovie: PropTypes.func,
+  cancelDeleteMovie: PropTypes.func,
+  submitAddMovie: PropTypes.func,
+  submitEditMovie: PropTypes.func,
+  submitDeleteMovie: PropTypes.func,
+  movies: PropTypes.array,
+  editMovie: PropTypes.object,
+  addMovie: PropTypes.object,
+  filterGenre: PropTypes.string,
+  deleteMovie: PropTypes.object,
+  sortParameter: PropTypes.string,
 };

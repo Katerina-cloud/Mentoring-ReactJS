@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FilterButton, Dropdown } from '../../components/';
 import { setFilterGenre } from '../../store/actions/movies';
+import { moviesSelector } from '../../store/selectors/';
 
 const data = [
   {
@@ -26,6 +27,8 @@ export const FilterBar = () => {
   const onClick = (genre) => {
     dispatch(setFilterGenre(genre));
   };
+  const movies = useSelector(moviesSelector);
+
   return (
     <div className="filter-bar__wrapper">
       <div className="filter-bar">
@@ -40,7 +43,7 @@ export const FilterBar = () => {
       </div>
       <div className="filter-bar__border" />
       <div className="filter-bar__results">
-        <span className="filter-bar__results--bold">39</span> movies found
+        <span className="filter-bar__results--bold">{movies.length}</span> movies found
       </div>
     </div>
   );

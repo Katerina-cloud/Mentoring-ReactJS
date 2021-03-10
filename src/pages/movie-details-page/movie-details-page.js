@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { filterMovies } from '../../services/movie';
 import {
   HeaderMovieDetails,
   Footer,
@@ -35,12 +36,8 @@ export const MovieDetailsPage = () => {
 
   const [currentMovie, setCurrentMovie] = useState();
 
-  movies =
-    filterGenre === null || filterGenre === 'All'
-      ? movies
-      : movies.filter((movie) => {
-          return movie.genres.includes(filterGenre);
-        });
+  const filterConfig = { filterGenre };
+  const filteredMovies = filterMovies(movies, filterConfig);
 
   useEffect(() => {
     if (!movies.length) {
@@ -86,7 +83,7 @@ export const MovieDetailsPage = () => {
           <FilterBar />
         </div>
         <div className="home-page__films">
-          {movies.map((item, index) => (
+          {filteredMovies.map((item, index) => (
             <div
               key={index}
               className="home-page__film"

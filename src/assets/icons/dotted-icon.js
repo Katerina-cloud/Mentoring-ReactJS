@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function DottedIcon(props) {
+export function DottedIcon() {
   return (
     <svg width={45} height={44} viewBox="0 0 45 44" fill="none">
       <ellipse cx={22.5} cy={22} rx={22.5} ry={22} fill="#232323" />

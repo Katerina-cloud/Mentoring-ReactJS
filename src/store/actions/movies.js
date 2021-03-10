@@ -21,43 +21,47 @@ import {
   SET_FILTER_BY_GENRE,
   CLEAR_FILTER_BY_GENRE,
   SET_SORT_PARAMETER,
-} from '../action-types/';
+} from '../action-types';
 import { FETCH_MOVIES_API_URL } from '../../const/';
+
+const doLoadMovies = () => ({ type: MOVIES_LOAD });
+const doLoadMoviesSuccess = (payload) => ({
+  type: MOVIES_SUCCESS,
+  payload,
+});
+const doLoadMoviesFail = (payload) => ({
+  type: MOVIES_FAIL,
+  payload,
+});
+const doSetEditMovie = (payload) => ({
+  type: SET_EDIT_MOVIE,
+  payload,
+});
+const doClearEditMovie = () => ({ type: CLEAR_EDIT_MOVIE });
 
 export const fetchMovies = () => {
   return async (dispatch) => {
-    dispatch({ type: MOVIES_LOAD });
+    dispatch(doLoadMovies());
     try {
       const response = await fetch(FETCH_MOVIES_API_URL);
       const data = await response.json();
 
-      dispatch({
-        type: MOVIES_SUCCESS,
-        payload: data,
-      });
+      dispatch(doLoadMoviesSuccess(data));
     } catch (err) {
-      dispatch({
-        type: MOVIES_FAIL,
-        payload: err,
-      });
+      dispatch(doLoadMoviesFail(err));
     }
   };
 };
 
 export const setEditMovie = (movie) => {
   return (dispatch) => {
-    dispatch({
-      type: SET_EDIT_MOVIE,
-      payload: movie,
-    });
+    dispatch(doSetEditMovie(movie));
   };
 };
 
 export const clearEditMovie = () => {
   return (dispatch) => {
-    dispatch({
-      type: CLEAR_EDIT_MOVIE,
-    });
+    dispatch(doClearEditMovie());
   };
 };
 

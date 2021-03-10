@@ -1,10 +1,8 @@
 import { isDefaultFiltering } from '../movie';
+import { SORTINGS } from '../../const/sortings';
 
 describe('movie service', () => {
-  // it('isDefaultFiltering true', () => {
-  //   const tree = render(<Card />).toJSON();
-  //   expect(tree).toMatchSnapshot();
   it('movie service isDefaultFiltering', () => {
-    expect(isDefaultFiltering('All')).toBe(true);
+    expect(isDefaultFiltering(SORTINGS.ALL)).toBe(true);
   });
 });

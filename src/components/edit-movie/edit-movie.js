@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
@@ -91,4 +92,8 @@ export const EditMovie = ({ handleEditSubmit }) => {
       </Form>
     </Formik>
   );
+};
+
+EditMovie.propTypes = {
+  handleEditSubmit: PropTypes.func,
 };

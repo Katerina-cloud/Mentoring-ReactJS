@@ -2,8 +2,7 @@
   "parser": "babel-eslint",
   "plugins": ["prettier", "testing-library"],
   "extends": [
-    "@react-native-community",
-    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:testing-library/recommended",
     "plugin:jest-dom/recommended"
   ],

@@ -16,6 +16,7 @@ export const SelectInput = ({ label, ...props }) => {
 };
 
 SelectInput.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,

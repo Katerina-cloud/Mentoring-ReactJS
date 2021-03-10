@@ -37,7 +37,6 @@ export const moviesReducer = (state = initialState, action) => {
   let newMovies;
   switch (action.type) {
     case MOVIES_SUCCESS:
-      console.log(action.payload.data);
       return {
         ...state,
         movies: action.payload.data,

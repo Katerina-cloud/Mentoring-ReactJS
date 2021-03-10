@@ -21,6 +21,7 @@ export const TextInput = ({ label, ...props }) => {
 };
 
 TextInput.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,

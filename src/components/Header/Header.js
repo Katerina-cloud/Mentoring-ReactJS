@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Logo, SearchBar } from '../../components/';
 
 export const Header = ({ openAddMovie }) => {
@@ -15,4 +16,8 @@ export const Header = ({ openAddMovie }) => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  openAddMovie: PropTypes.func,
 };
