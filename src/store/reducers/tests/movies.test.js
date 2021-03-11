@@ -130,6 +130,16 @@ describe('moviesReducer', () => {
     });
   });
 
+  it('should handle EDIT_MOVIE', () => {
+    expect(
+      moviesReducer(initialState, {
+        type: types.EDIT_MOVIE,
+      }),
+    ).toEqual({
+      ...initialState,
+    });
+  });
+
   it('should handle EDIT_MOVIE_SUCCESS', () => {
     expect(
       moviesReducer(
@@ -276,6 +286,16 @@ describe('moviesReducer', () => {
     });
   });
 
+  it('should handle DELETE_MOVIE', () => {
+    expect(
+      moviesReducer(initialState, {
+        type: types.DELETE_MOVIE,
+      }),
+    ).toEqual({
+      ...initialState,
+    });
+  });
+
   it('should handle DELETE_MOVIE_SUCCESS', () => {
     expect(
       moviesReducer(
@@ -406,6 +426,16 @@ describe('moviesReducer', () => {
       error: null,
       filterGenre: SORTINGS.ALL,
       sortParameter: 'release_date',
+    });
+  });
+
+  it('should handle ADD_MOVIE', () => {
+    expect(
+      moviesReducer(initialState, {
+        type: types.ADD_MOVIE,
+      }),
+    ).toEqual({
+      ...initialState,
     });
   });
 

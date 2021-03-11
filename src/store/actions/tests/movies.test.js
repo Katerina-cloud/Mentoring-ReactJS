@@ -164,6 +164,31 @@ describe('movies actions', () => {
   });
 
   describe('editMovie', () => {
+    it('dispatches the correct actions on unsuccessful fetch request', () => {
+      fetchMock.putOnce(`${FETCH_MOVIES_API_URL}`, {
+        headers: { authorization: '', 'content-type': 'application/json' },
+      });
+
+      const expectedActions = [
+        { type: types.EDIT_MOVIE },
+        {
+          type: types.EDIT_MOVIE_FAIL,
+          payload: Error(
+            'fetch-mock: No fallback response defined for PUT to http://localhost:4000/movies/',
+          ),
+        },
+      ];
+
+      const store = mockStore({
+        moviesData: { movies: [] },
+        error: 'fetch-mock: No fallback response defined for PUT to http://localhost:4000/movies/',
+      });
+
+      return store.dispatch(actions.editMovie(editMovie)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+
     it('dispatches the correct actions on successful fetch request', async () => {
       fetchMock.putOnce(FETCH_MOVIES_API_URL, {
         body: editMovie,
@@ -213,9 +238,32 @@ describe('movies actions', () => {
   });
 
   describe('deleteMovie', () => {
-    it('dispatches the correct actions on successful fetch request', async () => {
-      const id = '13213';
+    const id = '13213';
+    it('dispatches the correct actions on unsuccessful fetch request', () => {
+      fetchMock.mock(`${FETCH_MOVIES_API_URL}`, {});
 
+      const expectedActions = [
+        { type: types.DELETE_MOVIE },
+        {
+          type: types.DELETE_MOVIE_FAIL,
+          payload: Error(
+            'fetch-mock: No fallback response defined for DELETE to http://localhost:4000/movies/13213',
+          ),
+        },
+      ];
+
+      const store = mockStore({
+        moviesData: { movies: [] },
+        error:
+          'ffetch-mock: No fallback response defined for DELETE to http://localhost:4000/movies/13213',
+      });
+
+      return store.dispatch(actions.deleteMovie(id)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+
+    it('dispatches the correct actions on successful fetch request', async () => {
       fetchMock.deleteOnce(FETCH_MOVIES_API_URL, {});
 
       const expectedActions = [
@@ -258,6 +306,56 @@ describe('movies actions', () => {
 
       store.dispatch(actions.clearAddMovie());
       expect(...store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  describe('addMovie', () => {
+    it('dispatches the correct actions on unsuccessful fetch request', () => {
+      fetchMock.postOnce(`${FETCH_MOVIES_API_URL}`, {
+        headers: { authorization: '', 'content-type': 'application/json' },
+      });
+
+      const expectedActions = [
+        { type: types.ADD_MOVIE },
+        {
+          type: types.ADD_MOVIE_FAIL,
+          payload: Error(
+            'fetch-mock: No fallback response defined for POST to http://localhost:4000/movies/',
+          ),
+        },
+      ];
+
+      const store = mockStore({
+        moviesData: { movies: [] },
+        error: 'fetch-mock: No fallback response defined for POST to http://localhost:4000/movies/',
+      });
+
+      return store.dispatch(actions.addMovie(addMovie)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+
+    it('dispatches the correct actions on successful fetch request', async () => {
+      fetchMock.postOnce(FETCH_MOVIES_API_URL, {
+        body: addMovie,
+        headers: { 'content-type': 'application/json' },
+      });
+
+      const expectedActions = [
+        { type: types.ADD_MOVIE },
+        {
+          type: types.ADD_MOVIE_SUCCESS,
+          payload: addMovie,
+        },
+      ];
+
+      const store = mockStore({
+        moviesData: { movies },
+      });
+
+      return store.dispatch(actions.addMovie(addMovie)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
     });
   });
 
