@@ -40,7 +40,7 @@ export const Film = ({
 };
 
 Film.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   genres: PropTypes.array,
   year: PropTypes.string,

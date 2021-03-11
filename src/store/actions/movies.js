@@ -18,8 +18,8 @@ import {
   EDIT_MOVIE_SUCCESS,
   EDIT_MOVIE,
   EDIT_MOVIE_FAIL,
-  SET_FILTER_BY_GENRE,
-  CLEAR_FILTER_BY_GENRE,
+  SET_FILTER_GENRE,
+  CLEAR_FILTER_GENRE,
   SET_SORT_PARAMETER,
 } from '../action-types';
 import { FETCH_MOVIES_API_URL } from '../../const/';
@@ -38,6 +38,52 @@ const doSetEditMovie = (payload) => ({
   payload,
 });
 const doClearEditMovie = () => ({ type: CLEAR_EDIT_MOVIE });
+const doEditMovie = () => ({ type: EDIT_MOVIE });
+const doEditMoviesSuccess = (payload) => ({
+  type: EDIT_MOVIE_SUCCESS,
+  payload,
+});
+const doEditMoviesFail = (payload) => ({
+  type: EDIT_MOVIE_FAIL,
+  payload,
+});
+const doSetDeleteMovie = (payload) => ({
+  type: SET_DELETE_MOVIE,
+  payload,
+});
+const doClearDeleteMovie = () => ({ type: CLEAR_DELETE_MOVIE });
+const doDeleteMovie = () => ({ type: DELETE_MOVIE });
+const doDeleteMoviesSuccess = (payload) => ({
+  type: DELETE_MOVIE_SUCCESS,
+  payload,
+});
+const doDeleteMoviesFail = (payload) => ({
+  type: DELETE_MOVIE_FAIL,
+  payload,
+});
+const doSetAddMovie = (payload) => ({
+  type: SET_ADD_MOVIE,
+  payload,
+});
+const doClearAddMovie = () => ({ type: CLEAR_ADD_MOVIE });
+const doAddMovie = () => ({ type: ADD_MOVIE });
+const doAddMoviesSuccess = (payload) => ({
+  type: ADD_MOVIE_SUCCESS,
+  payload,
+});
+const doAddMoviesFail = (payload) => ({
+  type: ADD_MOVIE_FAIL,
+  payload,
+});
+const doSetFilterGenre = (payload) => ({
+  type: SET_FILTER_GENRE,
+  payload,
+});
+const doClearFilterGenre = () => ({ type: CLEAR_FILTER_GENRE });
+const doSetSortParameter = (payload) => ({
+  type: SET_SORT_PARAMETER,
+  payload,
+});
 
 export const fetchMovies = () => {
   return async (dispatch) => {
@@ -67,7 +113,7 @@ export const clearEditMovie = () => {
 
 export const editMovie = (movie) => {
   return async (dispatch) => {
-    dispatch({ type: EDIT_MOVIE });
+    dispatch(doEditMovie());
     try {
       let response = await fetch(FETCH_MOVIES_API_URL, {
         method: 'PUT',
@@ -79,82 +125,57 @@ export const editMovie = (movie) => {
 
       if (response.ok) {
         let result = await response.json();
-        dispatch({
-          type: EDIT_MOVIE_SUCCESS,
-          payload: result,
-        });
+        dispatch(doEditMoviesSuccess(result));
       } else {
-        dispatch({
-          type: EDIT_MOVIE_FAIL,
-          payload: response.status,
-        });
+        dispatch(doEditMoviesFail(response.status));
       }
     } catch (error) {
-      dispatch({
-        type: EDIT_MOVIE_FAIL,
-        payload: error,
-      });
+      dispatch(doEditMoviesFail(error));
     }
   };
 };
 
 export const setDeleteMovie = (movie) => {
   return (dispatch) => {
-    dispatch({
-      type: SET_DELETE_MOVIE,
-      payload: movie,
-    });
+    dispatch(doSetDeleteMovie(movie));
   };
 };
 
 export const clearDeleteMovie = () => {
   return (dispatch) => {
-    dispatch({
-      type: CLEAR_DELETE_MOVIE,
-    });
+    dispatch(doClearDeleteMovie());
   };
 };
 
 export const deleteMovie = (movieId) => {
   return async (dispatch) => {
-    dispatch({ type: DELETE_MOVIE });
+    dispatch(doDeleteMovie());
     try {
       await fetch(FETCH_MOVIES_API_URL + String(movieId), {
         method: 'DELETE',
       });
-      dispatch({
-        type: DELETE_MOVIE_SUCCESS,
-        payload: movieId,
-      });
+      dispatch(doDeleteMoviesSuccess(movieId));
     } catch (err) {
-      dispatch({
-        type: DELETE_MOVIE_FAIL,
-        payload: err,
-      });
+      dispatch(doDeleteMoviesFail(err));
     }
   };
 };
 
 export const setAddMovie = (movie) => {
   return (dispatch) => {
-    dispatch({
-      type: SET_ADD_MOVIE,
-      payload: movie,
-    });
+    dispatch(doSetAddMovie(movie));
   };
 };
 
 export const clearAddMovie = () => {
   return (dispatch) => {
-    dispatch({
-      type: CLEAR_ADD_MOVIE,
-    });
+    dispatch(doClearAddMovie());
   };
 };
 
 export const addMovie = (movie) => {
   return async (dispatch) => {
-    dispatch({ type: ADD_MOVIE });
+    dispatch(doAddMovie());
     try {
       let response = await fetch(FETCH_MOVIES_API_URL, {
         method: 'POST',
@@ -167,48 +188,31 @@ export const addMovie = (movie) => {
       if (response.ok) {
         let result = await response.json();
 
-        dispatch({
-          type: ADD_MOVIE_SUCCESS,
-          payload: result,
-        });
+        dispatch(doAddMoviesSuccess(result));
       } else {
-        dispatch({
-          type: ADD_MOVIE_FAIL,
-          payload: response.status,
-        });
+        dispatch(doAddMoviesFail(response.status));
       }
     } catch (error) {
-      dispatch({
-        type: ADD_MOVIE_FAIL,
-        payload: error,
-      });
+      dispatch(doAddMoviesFail(error));
     }
   };
 };
 
 export const setFilterGenre = (genre) => {
   return (dispatch) => {
-    dispatch({
-      type: SET_FILTER_BY_GENRE,
-      payload: genre,
-    });
+    dispatch(doSetFilterGenre(genre));
   };
 };
 
 export const clearFilterGenre = () => {
   return (dispatch) => {
-    dispatch({
-      type: CLEAR_FILTER_BY_GENRE,
-    });
+    dispatch(doClearFilterGenre());
   };
 };
 
 export const setSortParameter = (sortParam) => {
   return (dispatch) => {
-    dispatch({
-      type: SET_SORT_PARAMETER,
-      payload: sortParam,
-    });
+    dispatch(doSetSortParameter(sortParam));
   };
 };
 

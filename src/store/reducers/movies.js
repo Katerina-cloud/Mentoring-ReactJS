@@ -16,8 +16,8 @@ import {
   ADD_MOVIE,
   ADD_MOVIE_SUCCESS,
   ADD_MOVIE_FAIL,
-  SET_FILTER_BY_GENRE,
-  CLEAR_FILTER_BY_GENRE,
+  SET_FILTER_GENRE,
+  CLEAR_FILTER_GENRE,
   SET_SORT_PARAMETER,
 } from '../action-types/';
 
@@ -37,6 +37,7 @@ export const moviesReducer = (state = initialState, action) => {
   let newMovies;
   switch (action.type) {
     case MOVIES_SUCCESS:
+      console.log(action.payload.data);
       return {
         ...state,
         movies: action.payload.data,
@@ -120,12 +121,12 @@ export const moviesReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
-    case SET_FILTER_BY_GENRE:
+    case SET_FILTER_GENRE:
       return {
         ...state,
         filterGenre: action.payload,
       };
-    case CLEAR_FILTER_BY_GENRE:
+    case CLEAR_FILTER_GENRE:
       return {
         ...state,
         filterGenre: null,

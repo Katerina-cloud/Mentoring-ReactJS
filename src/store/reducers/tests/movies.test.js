@@ -505,10 +505,10 @@ describe('moviesReducer', () => {
     });
   });
 
-  it('should handle SET_FILTER_BY_GENRE', () => {
+  it('should handle SET_FILTER_GENRE', () => {
     expect(
       moviesReducer(initialState, {
-        type: types.SET_FILTER_BY_GENRE,
+        type: types.SET_FILTER_GENRE,
         payload: 'comedy',
       }),
     ).toEqual({
@@ -517,10 +517,10 @@ describe('moviesReducer', () => {
     });
   });
 
-  it('should handle CLEAR_FILTER_BY_GENRE', () => {
+  it('should handle CLEAR_FILTER_GENRE', () => {
     expect(
       moviesReducer(initialState, {
-        type: types.CLEAR_FILTER_BY_GENRE,
+        type: types.CLEAR_FILTER_GENRE,
         payload: null,
       }),
     ).toEqual({
