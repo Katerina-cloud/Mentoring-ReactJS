@@ -13,7 +13,7 @@ describe('FilterButton', () => {
     const onClickMock = jest.fn();
     render(<FilterButton onClick={onClickMock} title="Test Button" />);
     userEvent.click(screen.getByRole('button'));
-
+    console.log(screen.getByRole('button'));
     expect(onClickMock).toHaveBeenCalledTimes(1);
   });
 });

@@ -18,7 +18,7 @@ export const EditMovie = ({ handleEditSubmit }) => {
         poster_path,
         overview,
         runtime,
-        genres: genres[0],
+        genres: genres ? genres[0] : '',
         release_date,
       }}
       validationSchema={Yup.object({
