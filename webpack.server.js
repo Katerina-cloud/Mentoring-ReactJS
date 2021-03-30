@@ -1,11 +1,19 @@
 const path = require('path');
+const webpackNodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['@babel/polyfill', './src/client/client.js'],
+  target: 'node',
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'server-build'),
+  },
+
+  externals: [webpackNodeExternals()],
+
   module: {
     rules: [
       {
@@ -24,31 +32,35 @@ module.exports = {
         include: /node_modules/,
         use: ['react-hot-loader/webpack'],
       },
+      // {
+      //   test: /\.(scss)$/,
+      //   use: [
+      //     {
+      //       loader: 'style-loader', // inject CSS to page
+      //     },
+      //     {
+      //       loader: 'css-loader', // translates CSS into CommonJS modules
+      //     },
+      //     {
+      //       loader: 'postcss-loader', // Run post css actions
+      //       options: {
+      //         postcssOptions: {
+      //           plugins: [['autoprefixer']],
+      //         },
+      //       },
+      //     },
+      //     {
+      //       loader: 'sass-loader', // compiles Sass to CSS
+      //     },
+      //   ],
+      // },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
       {
-        test: /\.(scss)$/,
-        use: [
-          {
-            loader: 'style-loader', // inject CSS to page
-          },
-          {
-            loader: 'css-loader', // translates CSS into CommonJS modules
-          },
-          {
-            loader: 'postcss-loader', // Run post css actions
-            options: {
-              postcssOptions: {
-                plugins: [['autoprefixer']],
-              },
-            },
-          },
-          {
-            loader: 'sass-loader', // compiles Sass to CSS
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(s*)css$/,
+        loader: ['css-loader/locals', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -73,16 +85,7 @@ module.exports = {
     ],
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
-  output: {
-    path: path.resolve(__dirname, 'public/'),
-    publicPath: '/',
-    filename: 'bundle.js',
-  },
   plugins: [
-    // new HtmlWebPackPlugin({
-    //   template: './public/index.html',
-    //   filename: './index.html',
-    // }),
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new CopyPlugin({
