@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SearchIcon } from '../../assets/icons/search';
+import { buildHomeLink } from './helpers';
 import { Raiting, Logo } from '..';
+import { Link } from 'react-router-dom';
 
 export const HeaderMovieDetails = ({
   movie: { title, vote_average, overview, release_date, runtime, genres, poster_path },
@@ -15,8 +16,9 @@ export const HeaderMovieDetails = ({
   return (
     <header className="header-movie-details">
       <div className="header-movie-details__header">
-        <Logo />
-        <SearchIcon />
+        <Link to={buildHomeLink}>
+          <Logo />
+        </Link>
       </div>
       <div className="header-movie-details__main">
         <img src={poster_path} className="header-movie-details__image" alt={`${title} poster`} />
